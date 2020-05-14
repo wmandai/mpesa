@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Facades;
+namespace Wmandai\Mpesa\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Identity
- * @package Wmandai\MobileMoney\Mpesa\Facades
+ * @package Wmandai\Mpesa\Facades
  */
 class Identity extends Facade
 {

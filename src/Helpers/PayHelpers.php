@@ -1,9 +1,9 @@
 <?php
 
-use Wmandai\MobileMoney\Mpesa\Facades\B2C;
-use Wmandai\MobileMoney\Mpesa\Facades\Identity;
-use Wmandai\MobileMoney\Mpesa\Facades\STK;
-use Wmandai\MobileMoney\Mpesa\Library\Simulate;
+use Wmandai\Mpesa\Facades\B2C;
+use Wmandai\Mpesa\Facades\Identity;
+use Wmandai\Mpesa\Facades\STK;
+use Wmandai\Mpesa\Library\Simulate;
 
 if (!function_exists('mpesa_balance')) {
     /**

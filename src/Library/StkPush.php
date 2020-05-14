@@ -1,18 +1,18 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
 use Carbon\Carbon;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest;
-use Wmandai\MobileMoney\Mpesa\Events\StkPushRequestedEvent;
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
-use Wmandai\MobileMoney\Mpesa\Repositories\Generator;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
+use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Events\StkPushRequestedEvent;
+use Wmandai\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Repositories\Generator;
 
 /**
  * Class StkPush
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class StkPush extends ApiCore
 {
@@ -112,7 +112,7 @@ class StkPush extends ApiCore
             'TransactionDesc' => $description ?? $this->description ?? Generator::generateTransactionNumber(),
         ];
         $response = $this->sendRequest($body, 'stk_push');
-        return $this->saveStkRequest($body, (array)$response);
+        return $this->saveStkRequest($body, (array) $response);
     }
 
     /**
@@ -153,7 +153,7 @@ class StkPush extends ApiCore
      */
     public function validate($checkoutRequestID)
     {
-        if ((int)$checkoutRequestID) {
+        if ((int) $checkoutRequestID) {
             $checkoutRequestID = MpesaStkRequest::find($checkoutRequestID)->CheckoutRequestID;
         }
         $time = Carbon::now()->format('YmdHis');

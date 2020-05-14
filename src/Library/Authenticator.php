@@ -1,17 +1,17 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Psr\Http\Message\ResponseInterface;
-use Wmandai\MobileMoney\Mpesa\Repositories\EndpointsRepository;
+use Wmandai\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Repositories\EndpointsRepository;
 
 /**
  * Class Authenticator
  *
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class Authenticator
 {
@@ -75,8 +75,8 @@ class Authenticator
             throw new MpesaException($response->getReasonPhrase());
         } catch (RequestException $exception) {
             $message = $exception->getResponse() ?
-                $exception->getResponse()->getReasonPhrase() :
-                $exception->getMessage();
+            $exception->getResponse()->getReasonPhrase() :
+            $exception->getMessage();
 
             throw $this->generateException($message);
         }

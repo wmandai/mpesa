@@ -1,11 +1,11 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest
+ * Wmandai\Mpesa\Database\Entities\MpesaStkRequest
  *
  * @property int $id
  * @property string $phone
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $user_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback $response
+ * @property-read \Wmandai\Mpesa\Database\Entities\MpesaStkCallback $response
  * @mixin \Eloquent
  */
 class MpesaStkRequest extends Model

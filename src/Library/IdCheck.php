@@ -1,13 +1,13 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
 use Carbon\Carbon;
 
 /**
  * Class IdCheck
  *
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class IdCheck extends ApiCore
 {
@@ -35,7 +35,7 @@ class IdCheck extends ApiCore
             'TransactionType' => 'CheckIdentity',
             'PhoneNumber' => $number,
             'CallBackURL' => $callback ?: $defaultCallback,
-            'TransactionDesc' => ' '
+            'TransactionDesc' => ' ',
         ];
         return $this->sendRequest($body, 'id_check');
     }

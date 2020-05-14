@@ -1,15 +1,15 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Events;
+namespace Wmandai\Mpesa\Events;
 
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
 
 /**
  * Class B2cPaymentSuccessEvent
- * @package Wmandai\MobileMoney\Events
+ * @package Wmandai\Mpesa\Events
  */
 class B2cPaymentSuccessEvent
 {

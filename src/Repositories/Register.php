@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Repositories;
+namespace Wmandai\Mpesa\Repositories;
 
-use Wmandai\MobileMoney\Mpesa\Library\RegisterUrl;
+use Wmandai\Mpesa\Library\RegisterUrl;
 
 /**
  * Class Register
- * @package Wmandai\MobileMoney\Mpesa\Repositories
+ * @package Wmandai\Mpesa\Repositories
  */
 class Register
 {
@@ -26,7 +26,7 @@ class Register
 
     /**
      * @return mixed
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
      */

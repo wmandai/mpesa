@@ -1,26 +1,24 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Repositories;
+namespace Wmandai\Mpesa\Repositories;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaB2cResultParameter;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaC2bCallback;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback;
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest;
-use Wmandai\MobileMoney\Mpesa\Events\B2cPaymentFailedEvent;
-use Wmandai\MobileMoney\Mpesa\Events\B2cPaymentSuccessEvent;
-use Wmandai\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
-use Wmandai\MobileMoney\Mpesa\Notifications\MpesaNotification;
+use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
+use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
+use Wmandai\Mpesa\Database\Entities\MpesaC2bCallback;
+use Wmandai\Mpesa\Database\Entities\MpesaStkCallback;
+use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Events\B2cPaymentFailedEvent;
+use Wmandai\Mpesa\Events\B2cPaymentSuccessEvent;
+use Wmandai\Mpesa\Events\C2bConfirmationEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentFailedEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentSuccessEvent;
+use Wmandai\Mpesa\Notifications\MpesaNotification;
 
 /**
  * Class Mpesa
- * @package Wmandai\MobileMoney\Repositories
+ * @package Wmandai\Mpesa\Repositories
  */
 class Mpesa
 {
@@ -94,7 +92,7 @@ class Mpesa
         }
 
         $common = [
-            'ResultType', 'ResultCode', 'ResultDesc', 'OriginatorConversationID', 'ConversationID', 'TransactionID'
+            'ResultType', 'ResultCode', 'ResultDesc', 'OriginatorConversationID', 'ConversationID', 'TransactionID',
         ];
         $seek = ['OriginatorConversationID' => $data['OriginatorConversationID']];
         /** @var MpesaBulkPaymentResponse $response */
@@ -144,7 +142,7 @@ class Mpesa
         }
         $payload = [
             'message' => request()->all(),
-            'title' => $title
+            'title' => $title,
         ];
 
         \Notification::route('slack', \config('laravel-mpesa.notifications.slack_web_hook'))->notify(new MpesaNotification($payload));

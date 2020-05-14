@@ -1,6 +1,6 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Http\Controllers;
+namespace Wmandai\Mpesa\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * Class Controller
  *
- * @package Wmandai\MobileMoney\Http\Controllers
+ * @package Wmandai\Mpesa\Http\Controllers
  */
 class Controller extends BaseController
 {

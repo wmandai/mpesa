@@ -1,13 +1,13 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Repositories;
+namespace Wmandai\Mpesa\Repositories;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class EndpointsRepository
  *
- * @package Wmandai\MobileMoney\Mpesa\Repositories
+ * @package Wmandai\Mpesa\Repositories
  */
 class EndpointsRepository
 {

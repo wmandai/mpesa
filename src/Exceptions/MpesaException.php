@@ -1,10 +1,10 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Exceptions;
+namespace Wmandai\Mpesa\Exceptions;
 
 /**
  * Class MpesaException
- * @package Wmandai\MobileMoney\Mpesa\Exceptions
+ * @package Wmandai\Mpesa\Exceptions
  */
 class MpesaException extends \Exception
 {

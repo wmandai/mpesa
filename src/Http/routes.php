@@ -2,8 +2,8 @@
 
 Route::group([
     'prefix' => 'payments/callbacks',
-    'middleware' => 'Wmandai\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors',
-    'namespace' => 'Wmandai\MobileMoney\Mpesa\Http\Controllers'
+    'middleware' => 'Wmandai\Mpesa\Http\Middlewares\MobileMoneyCors',
+    'namespace' => 'Wmandai\Mpesa\Http\Controllers',
 ], function () {
     Route::any('validate', 'MpesaController@validatePayment');
     Route::any('confirmation', 'MpesaController@confirmation');

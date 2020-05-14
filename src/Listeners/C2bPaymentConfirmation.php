@@ -1,13 +1,13 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Listeners;
+namespace Wmandai\Mpesa\Listeners;
 
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest;
-use Wmandai\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
+use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Events\C2bConfirmationEvent;
 
 /**
  * Class C2bPaymentConfirmation
- * @package Wmandai\MobileMoney\Listeners
+ * @package Wmandai\Mpesa\Listeners
  */
 class C2bPaymentConfirmation
 {

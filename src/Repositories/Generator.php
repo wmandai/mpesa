@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Repositories;
+namespace Wmandai\Mpesa\Repositories;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class Generator
- * @package Wmandai\MobileMoney\Repositories
+ * @package Wmandai\Mpesa\Repositories
  */
 class Generator
 {

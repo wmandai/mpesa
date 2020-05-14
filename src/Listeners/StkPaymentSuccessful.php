@@ -1,13 +1,12 @@
 <?php
 
+namespace Wmandai\Mpesa\Listeners;
 
-namespace Wmandai\MobileMoney\Mpesa\Listeners;
-
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentSuccessEvent;
 
 /**
  * Class StkPaymentSuccessful
- * @package Wmandai\MobileMoney\Listeners
+ * @package Wmandai\Mpesa\Listeners
  */
 class StkPaymentSuccessful
 {
@@ -16,7 +15,10 @@ class StkPaymentSuccessful
      */
     public function handle(StkPushPaymentSuccessEvent $event)
     {
-        /** @var \Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback $stk */
+        /**
+         * @var \Wmandai\Mpesa\Database\Entities\MpesaStkCallback $stk
+         *
+         */
         $stk = $event->stk_callback;
         $stk->request()->update(['status' => 'Paid']);
     }

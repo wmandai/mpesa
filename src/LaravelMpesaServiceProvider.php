@@ -5,25 +5,25 @@ namespace Wmandai\Mpesa;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Wmandai\MobileMoney\Mpesa\Commands\RegisterUrlCommand;
-use Wmandai\MobileMoney\Mpesa\Commands\StkStatusCommand;
-use Wmandai\MobileMoney\Mpesa\Events\B2cPaymentFailedEvent;
-use Wmandai\MobileMoney\Mpesa\Events\B2cPaymentSuccessEvent;
-use Wmandai\MobileMoney\Mpesa\Events\C2bConfirmationEvent;
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentSuccessEvent;
-use Wmandai\MobileMoney\Mpesa\Http\Middlewares\MobileMoneyCors;
-use Wmandai\MobileMoney\Mpesa\LaravelMpesa;
-use Wmandai\MobileMoney\Mpesa\Library\BulkSender;
-use Wmandai\MobileMoney\Mpesa\Library\Core;
-use Wmandai\MobileMoney\Mpesa\Library\IdCheck;
-use Wmandai\MobileMoney\Mpesa\Library\RegisterUrl;
-use Wmandai\MobileMoney\Mpesa\Library\StkPush;
-use Wmandai\MobileMoney\Mpesa\Listeners\C2bPaymentConfirmation;
-use Wmandai\MobileMoney\Mpesa\Listeners\StkPaymentFailed;
-use Wmandai\MobileMoney\Mpesa\Listeners\StkPaymentSuccessful;
-use Wmandai\MobileMoney\src\Mpesa\Listeners\B2CFailedListener;
-use Wmandai\MobileMoney\src\Mpesa\Listeners\B2CSuccessListener;
+use Wmandai\Mpesa\Commands\RegisterUrlCommand;
+use Wmandai\Mpesa\Commands\StkStatusCommand;
+use Wmandai\Mpesa\Events\B2cPaymentFailedEvent;
+use Wmandai\Mpesa\Events\B2cPaymentSuccessEvent;
+use Wmandai\Mpesa\Events\C2bConfirmationEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentFailedEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentSuccessEvent;
+use Wmandai\Mpesa\Http\Middlewares\MobileMoneyCors;
+use Wmandai\Mpesa\LaravelMpesa;
+use Wmandai\Mpesa\Library\BulkSender;
+use Wmandai\Mpesa\Library\Core;
+use Wmandai\Mpesa\Library\IdCheck;
+use Wmandai\Mpesa\Library\RegisterUrl;
+use Wmandai\Mpesa\Library\StkPush;
+use Wmandai\Mpesa\Listeners\C2bPaymentConfirmation;
+use Wmandai\Mpesa\Listeners\StkPaymentFailed;
+use Wmandai\Mpesa\Listeners\StkPaymentSuccessful;
+use Wmandai\src\Mpesa\Listeners\B2CFailedListener;
+use Wmandai\src\Mpesa\Listeners\B2CSuccessListener;
 
 class LaravelMpesaServiceProvider extends ServiceProvider
 {
@@ -44,7 +44,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-mpesa.php'),
+                __DIR__ . '/../config/config.php' => config_path('mpesa.php'),
             ], 'config');
 
             // Publishing the views.
@@ -88,7 +88,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
         $this->registerEvents();
 
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-mpesa');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'mpesa');
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-mpesa', function () {

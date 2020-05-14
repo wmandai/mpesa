@@ -1,13 +1,13 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Http\Controllers;
+namespace Wmandai\Mpesa\Http\Controllers;
 
-use Wmandai\MobileMoney\Mpesa\Facades\STK;
-use Wmandai\MobileMoney\Mpesa\Http\Requests\StkRequest;
+use Wmandai\Mpesa\Facades\STK;
+use Wmandai\Mpesa\Http\Requests\StkRequest;
 
 /**
  * Class StkController
- * @package Wmandai\MobileMoney\Http\Controllers
+ * @package Wmandai\Mpesa\Http\Controllers
  */
 class StkController extends Controller
 {

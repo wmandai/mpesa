@@ -1,15 +1,15 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Events;
+namespace Wmandai\Mpesa\Events;
 
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaC2bCallback;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Wmandai\Mpesa\Database\Entities\MpesaC2bCallback;
 
 /**
  * Class C2BConfirmationEvent
- * @package Wmandai\MobileMoney\Mpesa\Events
+ * @package Wmandai\Mpesa\Events
  */
 class C2bConfirmationEvent
 {

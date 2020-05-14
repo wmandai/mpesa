@@ -1,16 +1,16 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Events;
+namespace Wmandai\Mpesa\Events;
 
-use Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkRequest;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
+use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
 
 /**
  * Class StkPushRequestedEvent
- * @package Wmandai\MobileMoney\Mpesa\Events
+ * @package Wmandai\Mpesa\Events
  */
 class StkPushRequestedEvent
 {

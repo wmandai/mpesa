@@ -1,13 +1,10 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Facades;
+namespace Wmandai\Mpesa\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Wmandai\MobileMoney\Mpesa\Skeleton\SkeletonClass
- */
-class LaraPesa extends Facade
+class Mpesa extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +13,6 @@ class LaraPesa extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-mpesa';
+        return 'mpesa';
     }
 }

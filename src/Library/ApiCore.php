@@ -1,17 +1,17 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
-use Illuminate\Support\Str;
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
-use Wmandai\MobileMoney\Mpesa\Repositories\EndpointsRepository;
-use Wmandai\MobileMoney\Mpesa\Repositories\Mpesa;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Str;
+use Wmandai\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Repositories\EndpointsRepository;
+use Wmandai\Mpesa\Repositories\Mpesa;
 
 /**
  * Class ApiCore
  *
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class ApiCore
 {

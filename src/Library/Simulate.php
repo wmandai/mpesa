@@ -1,13 +1,13 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\ClientException;
+use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class Simulate
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class Simulate extends ApiCore
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Http\Requests;
+namespace Wmandai\Mpesa\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class StkRequest
- * @package Wmandai\MobileMoney\Mpesa\Http\Requests
+ * @package Wmandai\Mpesa\Http\Requests
  */
 class StkRequest extends FormRequest
 {

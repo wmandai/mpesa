@@ -1,10 +1,8 @@
 <?php
 
-
-namespace Wmandai\MobileMoney\Mpesa\Notifications;
+namespace Wmandai\Mpesa\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
@@ -45,24 +43,24 @@ class MpesaNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('MPESA response')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('MPESA response')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     public function toSlack($notifiable)
     {
         $message = '```' . json_encode($this->payload['message'], JSON_PRETTY_PRINT) . '```';
-        
+
         return (new SlackMessage)
-                ->from('MPESA', ':mailbox_with_mail:')
-                ->content('MPESA Payment Response')
-                ->attachment(function ($attachment) use ($message) {
-                    $attachment->title($this->payload['title'], url('/'))
-                               ->fields([
-                                    'Message' => $message,
-                                ]);
-                });
+            ->from('MPESA', ':mailbox_with_mail:')
+            ->content('MPESA Payment Response')
+            ->attachment(function ($attachment) use ($message) {
+                $attachment->title($this->payload['title'], url('/'))
+                    ->fields([
+                        'Message' => $message,
+                    ]);
+            });
     }
 
     /**

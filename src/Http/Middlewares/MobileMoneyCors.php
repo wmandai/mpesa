@@ -1,10 +1,10 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Http\Middlewares;
+namespace Wmandai\Mpesa\Http\Middlewares;
 
 /**
  * Class MobileMoneyCors
- * @package Wmandai\MobileMoney\Http\Middlewares
+ * @package Wmandai\Mpesa\Http\Middlewares
  */
 class MobileMoneyCors
 {
@@ -20,7 +20,7 @@ class MobileMoneyCors
         header('Access-Control-Allow-Origin: *');
         $headers = [
             'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Headers' => 'Content-Type, X-Auth-Token, Origin, Authorization'
+            'Access-Control-Allow-Headers' => 'Content-Type, X-Auth-Token, Origin, Authorization',
         ];
         if ($request->getMethod() === 'OPTIONS') {
             return \Response::make('OK', 200, $headers);

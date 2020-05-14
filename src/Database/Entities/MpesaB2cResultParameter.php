@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class MpesaB2cResultParameter
- * @package Wmandai\MobileMoney\Mpesa\Database\Entities
+ * @package Wmandai\Mpesa\Database\Entities
  */
 class MpesaB2cResultParameter extends Model
 {

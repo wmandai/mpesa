@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Listeners;
+namespace Wmandai\Mpesa\Listeners;
 
-use Wmandai\MobileMoney\Mpesa\Events\StkPushPaymentFailedEvent;
+use Wmandai\Mpesa\Events\StkPushPaymentFailedEvent;
 
 /**
  * Class StkPaymentFailed
- * @package Wmandai\MobileMoney\Listeners
+ * @package Wmandai\Mpesa\Listeners
  */
 class StkPaymentFailed
 {
@@ -15,7 +15,9 @@ class StkPaymentFailed
      */
     public function handle(StkPushPaymentFailedEvent $event)
     {
-        /** @var \Wmandai\MobileMoney\Mpesa\Database\Entities\MpesaStkCallback $stk */
+        /**
+         * @var \Wmandai\Mpesa\Database\Entities\MpesaStkCallback $stk
+         * */
         $stk = $event->stk_callback;
         $stk->request()->update(['status' => 'Failed']);
     }

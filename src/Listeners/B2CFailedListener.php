@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Listeners;
+namespace Wmandai\Mpesa\Listeners;
 
-use Wmandai\MobileMoney\Mpesa\Events\B2cPaymentFailedEvent;
+use Wmandai\Mpesa\Events\B2cPaymentFailedEvent;
 
 /**
  * Class B2CFailedListener
- * @package Wmandai\MobileMoney\src\Mpesa\Listeners
+ * @package Wmandai\Mpesa\Listeners
  */
 class B2CFailedListener
 {

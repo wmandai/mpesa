@@ -1,14 +1,14 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Http\Controllers;
+namespace Wmandai\Mpesa\Http\Controllers;
 
-use Wmandai\MobileMoney\Mpesa\Events\QueueTimeoutEvent;
-use Wmandai\MobileMoney\Mpesa\Repositories\Mpesa;
 use Illuminate\Http\Request;
+use Wmandai\Mpesa\Events\QueueTimeoutEvent;
+use Wmandai\Mpesa\Repositories\Mpesa;
 
 /**
  * Class MpesaController
- * @package Wmandai\MobileMoney\Http\Controllers
+ * @package Wmandai\Mpesa\Http\Controllers
  */
 class MpesaController extends Controller
 {
@@ -38,7 +38,7 @@ class MpesaController extends Controller
         return response()->json(
             [
                 'ResponseCode' => '00000000',
-                'ResponseDesc' => 'success'
+                'ResponseDesc' => 'success',
             ]
         );
     }
@@ -54,7 +54,7 @@ class MpesaController extends Controller
         return response()->json(
             [
                 'ResponseCode' => '00000000',
-                'ResponseDesc' => 'success'
+                'ResponseDesc' => 'success',
             ]
         );
     }
@@ -69,7 +69,7 @@ class MpesaController extends Controller
         return response()->json(
             [
                 'ResponseCode' => '00000000',
-                'ResponseDesc' => 'success'
+                'ResponseDesc' => 'success',
             ]
         );
     }

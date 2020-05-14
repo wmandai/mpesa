@@ -1,14 +1,14 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
 use GuzzleHttp\Exception\ServerException;
+use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class BulkSender
  *
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class BulkSender extends ApiCore
 {
@@ -28,7 +28,6 @@ class BulkSender extends ApiCore
      * @var int
      */
     private $trials = 3;
-
 
     /**
      * Set number to receive the funds
@@ -81,7 +80,7 @@ class BulkSender extends ApiCore
             'Remarks' => $remarks ?: $this->remarks,
             'QueueTimeOutURL' => \config('laravel-mpesa.b2c.timeout_url') . 'b2c',
             'ResultURL' => \config('laravel-mpesa.b2c.result_url') . 'b2c',
-            'Occasion' => ' '
+            'Occasion' => ' ',
         ];
         $this->bulk = true;
         try {

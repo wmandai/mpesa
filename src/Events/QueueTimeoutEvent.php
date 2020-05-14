@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Events;
+namespace Wmandai\Mpesa\Events;
 
 use Illuminate\Http\Request;
 
 /**
  * Class QueueTimeoutEvent
- * @package Wmandai\MobileMoney\Events
+ * @package Wmandai\Mpesa\Events
  */
 class QueueTimeoutEvent
 {

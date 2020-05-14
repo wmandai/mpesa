@@ -1,12 +1,12 @@
 <?php
 
-namespace Wmandai\MobileMoney\Mpesa\Library;
+namespace Wmandai\Mpesa\Library;
 
-use Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class RegisterUrl
- * @package Wmandai\MobileMoney\Mpesa\Library
+ * @package Wmandai\Mpesa\Library
  */
 class RegisterUrl extends ApiCore
 {
@@ -99,7 +99,7 @@ class RegisterUrl extends ApiCore
             'ShortCode' => $shortCode ?: $this->shortCode,
             'ResponseType' => $onTimeout ?: $this->onTimeout,
             'ConfirmationURL' => $confirmationURL ?: $this->confirmationURL,
-            'ValidationURL' => $validationURL ?: $this->validationURL
+            'ValidationURL' => $validationURL ?: $this->validationURL,
         ];
         return $this->sendRequest($body, 'register');
     }
