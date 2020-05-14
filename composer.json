@@ -1,0 +1,61 @@
+{
+    "name": "wmandai/mpesa",
+    "description": "MPESA API for Laravel Framework",
+    "keywords": [
+        "wmandai",
+        "larapesa",
+        "mpesa"
+    ],
+    "homepage": "https://github.com/wmandai/mpesa",
+    "license": "MIT",
+    "type": "library",
+    "authors": [{
+        "name": "William Mandai",
+        "email": "wmandai@gitbench.com",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.8|^6.0|^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpstan/phpstan": "^0.12.6",
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wmandai\\Mpesa\\": "src"
+        },
+        "files": [
+            "src/Helpers/PayHelpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wmandai\\Mpesa\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wmandai\\Mpesa\\LaravelMpesaServiceProvider"
+            ],
+            "aliases": {
+                "Mpesa": "Wmandai\\Mpesa\\Facades\\Mpesa",
+                "B2C": "Wmandai\\Mpesa\\Facades\\B2C",
+                "Identity": "Wmandai\\Mpesa\\Facades\\Identity",
+                "Registrar": "Wmandai\\Mpesa\\Facades\\Registrar",
+                "STK": "Wmandai\\Mpesa\\Facades\\STK"
+            }
+        }
+    }
+}
