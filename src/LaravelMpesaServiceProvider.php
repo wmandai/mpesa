@@ -12,8 +12,8 @@ use Wmandai\Mpesa\Events\B2cPaymentSuccessEvent;
 use Wmandai\Mpesa\Events\C2bConfirmationEvent;
 use Wmandai\Mpesa\Events\StkPushPaymentFailedEvent;
 use Wmandai\Mpesa\Events\StkPushPaymentSuccessEvent;
+use Wmandai\Mpesa\Facades\MpesaFacade;
 use Wmandai\Mpesa\Http\Middlewares\MobileMoneyCors;
-use Wmandai\Mpesa\LaravelMpesa;
 use Wmandai\Mpesa\Library\BulkSender;
 use Wmandai\Mpesa\Library\Core;
 use Wmandai\Mpesa\Library\IdCheck;
@@ -27,12 +27,20 @@ use Wmandai\src\Mpesa\Listeners\B2CSuccessListener;
 
 class LaravelMpesaServiceProvider extends ServiceProvider
 {
+
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
+
     /**
      * Bootstrap the application services.
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
         /*
          * Optional methods to load your package assets
@@ -49,22 +57,22 @@ class LaravelMpesaServiceProvider extends ServiceProvider
 
             // Publishing the views.
             /*$this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-mpesa'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/mpesa'),
             ], 'views');*/
 
             // Publishing assets.
             /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/laravel-mpesa'),
+            __DIR__.'/../resources/assets' => public_path('vendor/mpesa'),
             ], 'assets');*/
 
             // Publishing the translation files.
             /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-mpesa'),
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/mpesa'),
             ], 'lang');*/
 
             // Registering package commands.
             // $this->commands([]);
-            $this->app['router']->aliasMiddleware('pesa.cors', MobileMoneyCors::class);
+            $this->app['router']->aliasMiddleware('mpesacors', MobileMoneyCors::class);
         }
     }
 
@@ -77,12 +85,14 @@ class LaravelMpesaServiceProvider extends ServiceProvider
         $this->app->bind(Core::class, function () use ($core) {
             return $core;
         });
-        $this->commands(
-            [
-                RegisterUrlCommand::class,
-                StkStatusCommand::class,
-            ]
-        );
+        if ($this->app->runningInConsole()) {
+            $this->commands(
+                [
+                    RegisterUrlCommand::class,
+                    StkStatusCommand::class,
+                ]
+            );
+        }
 
         $this->registerFacades();
         $this->registerEvents();
@@ -90,9 +100,11 @@ class LaravelMpesaServiceProvider extends ServiceProvider
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'mpesa');
 
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mpesa');
+
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-mpesa', function () {
-            return new LaravelMpesa;
+        $this->app->singleton('mpesa', function () {
+            return new MpesaFacade;
         });
     }
 

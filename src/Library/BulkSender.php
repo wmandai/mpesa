@@ -71,15 +71,15 @@ class BulkSender extends ApiCore
     public function send($number = null, $amount = null, $remarks = null)
     {
         $body = [
-            'InitiatorName' => \config('laravel-mpesa.b2c.initiator'),
-            'SecurityCredential' => \config('laravel-mpesa.b2c.security_credential'),
+            'InitiatorName' => \config('mpesa.b2c.initiator'),
+            'SecurityCredential' => \config('mpesa.b2c.security_credential'),
             'CommandID' => 'BusinessPayment', //SalaryPayment,BusinessPayment,PromotionPayment
             'Amount' => $amount ?: $this->amount,
-            'PartyA' => \config('laravel-mpesa.b2c.short_code'),
+            'PartyA' => \config('mpesa.b2c.short_code'),
             'PartyB' => $this->formatPhoneNumber($number ?: $this->number),
             'Remarks' => $remarks ?: $this->remarks,
-            'QueueTimeOutURL' => \config('laravel-mpesa.b2c.timeout_url') . 'b2c',
-            'ResultURL' => \config('laravel-mpesa.b2c.result_url') . 'b2c',
+            'QueueTimeOutURL' => \config('mpesa.b2c.timeout_url') . 'b2c',
+            'ResultURL' => \config('mpesa.b2c.result_url') . 'b2c',
             'Occasion' => ' ',
         ];
         $this->bulk = true;
@@ -105,13 +105,13 @@ class BulkSender extends ApiCore
     {
         $body = [
             'CommandID' => 'AccountBalance',
-            'Initiator' => \config('laravel-mpesa.bulk.initiator'),
-            'SecurityCredential' => \config('laravel-mpesa.bulk.security_credential'),
-            'PartyA' => \config('laravel-mpesa.bulk.short_code'),
+            'Initiator' => \config('mpesa.bulk.initiator'),
+            'SecurityCredential' => \config('mpesa.bulk.security_credential'),
+            'PartyA' => \config('mpesa.bulk.short_code'),
             'IdentifierType' => 4,
             'Remarks' => 'Checking Balance',
-            'QueueTimeOutURL' => \config('laravel-mpesa.bulk.timeout_url') . 'bulk_balance',
-            'ResultURL' => \config('laravel-mpesa.bulk.result_url') . 'bulk_balance',
+            'QueueTimeOutURL' => \config('mpesa.bulk.timeout_url') . 'bulk_balance',
+            'ResultURL' => \config('mpesa.bulk.result_url') . 'bulk_balance',
         ];
         $this->bulk = true;
         return $this->sendRequest($body, 'account_balance');

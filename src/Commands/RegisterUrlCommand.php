@@ -60,16 +60,16 @@ class RegisterUrlCommand extends Command
 
     private function askShortcode(): string
     {
-        return $this->ask('What is your shortcode', \config('laravel-mpesa.c2b.short_code'));
+        return $this->ask('What is your shortcode', config('mpesa.c2b.short_code'));
     }
 
     private function askConfirmationUrl(): string
     {
-        return $this->ask('Confirmation Url', \config('laravel-mpesa.c2b.confirmation_url'));
+        return $this->ask('Confirmation Url', \config('mpesa.c2b.confirmation_url'));
     }
 
     private function askValidationUrl(): string
     {
-        return $this->ask('Validation Url', \config('laravel-mpesa.c2b.validation_url'));
+        return $this->ask('Validation Url', \config('mpesa.c2b.validation_url'));
     }
 }

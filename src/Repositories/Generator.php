@@ -33,7 +33,7 @@ class Generator
      */
     public static function computeSecurityCredential($initiatorPass): string
     {
-        if (\config('laravel-mpesa.sandbox')) {
+        if (\config('mpesa.sandbox')) {
             $pubKeyFile = __DIR__ . '/../cert/sandbox.cer';
         } else {
             $pubKeyFile = __DIR__ . '/../cert/production.cer';

@@ -4,7 +4,7 @@ namespace Wmandai\Mpesa\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Mpesa extends Facade
+class MpesaFacade extends Facade
 {
     /**
      * Get the registered name of the component.

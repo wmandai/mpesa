@@ -5,6 +5,7 @@ namespace Wmandai\Mpesa\Library;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Str;
 use Wmandai\Mpesa\Exceptions\MpesaException;
+use Wmandai\Mpesa\Library\Core;
 use Wmandai\Mpesa\Repositories\EndpointsRepository;
 use Wmandai\Mpesa\Repositories\Mpesa;
 

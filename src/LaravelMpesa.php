@@ -2,6 +2,8 @@
 
 namespace Wmandai\Mpesa;
 
+use Wmandai\Mpesa\Exceptions\MpesaException;
+
 class LaravelMpesa
 {
 
@@ -88,7 +90,7 @@ class LaravelMpesa
 
     public function __construct()
     {
-        if (config('laravel-mpesa.environment') == 'sandbox') {
+        if (config('mpesa.sandbox')) {
             $this->base_url = 'https://sandbox.safaricom.co.ke/mpesa/';
         } else {
             $this->base_url = 'https://api.safaricom.co.ke/mpesa/';
@@ -96,30 +98,30 @@ class LaravelMpesa
         //Base URL for the API endpoints. This is basically the 'common' part of the API endpoints
 
         //App Key. Get it at https://developer.safaricom.co.ke
-        $this->consumer_key = config('laravel-mpesa.consumer_key');
+        $this->consumer_key = config('mpesa.c2b.consumer_key');
         //App Secret Key. Get it at https://developer.safaricom.co.ke
-        $this->consumer_secret = config('laravel-mpesa.consumer_secret');
+        $this->consumer_secret = config('mpesa.c2b.consumer_secret');
         //The paybill/till/lipa na mpesa number
-        $this->paybill = config('laravel-mpesa.paybill');
+        $this->paybill = config('mpesa.c2b.short_code');
         //Lipa Na Mpesa online checkout
-        $this->lipa_na_mpesa = config('laravel-mpesa.lipa_na_mpesa');
+        $this->lipa_na_mpesa = config('mpesa.c2b.short_code');
         //Lipa Na Mpesa online checkout password
-        $this->lipa_na_mpesa_key = config('laravel-mpesa.lipa_na_mpesa_passkey');
+        $this->lipa_na_mpesa_key = config('mpesa.c2b.passkey');
         //Initiator Username. I dont where how to get this.
-        $this->initiator_username = config('laravel-mpesa.initiator_username');
+        $this->initiator_username = config('mpesa.b2c.initiator');
         //Initiator password. I dont know where to get this either.
-        $this->initiator_password = config('laravel-mpesa.initiator_password');
+        $this->initiator_password = config('mpesa.b2c.security_credential');
 
-        $this->callback_baseurl = config('laravel-mpesa.callback_baseurl');
-        $this->lnmocallback = config('laravel-mpesa.lnmocallback');
-        $this->test_msisdn = config('laravel-mpesa.test_msisdn');
+        $this->callback_baseurl = config('mpesa.c2b.stk_callback');
+        $this->lnmocallback = config('mpesa.lnmocallback');
+        $this->test_msisdn = config('mpesa.test_msisdn');
         // c2b the urls
-        $this->cbvalidate = config('laravel-mpesa.c2b_validate_callback');
-        $this->cbconfirm = config('laravel-mpesa.c2b_confirm_callback');
+        $this->cbvalidate = config('mpesa.c2b.validation_url');
+        $this->cbconfirm = config('mpesa.c2b.confirmation_url');
 
         // b2c URLs
-        $this->bctimeout = config('laravel-mpesa.b2c_timeout');
-        $this->bcresult = config('laravel-mpesa.b2c_result');
+        $this->bctimeout = config('mpesa.b2c.timeout_url');
+        $this->bcresult = config('mpesa.b2c.result_url');
 
         //$pubkey=File::get(storage_path('app/public/thecert.cer'));
         //    $enc = '';
@@ -145,7 +147,7 @@ class LaravelMpesa
 
     public function setCred()
     {
-        if (config('laravel-mpesa.environment') == 'sandbox') {
+        if (config('mpesa.sandbox')) {
             $pubkey = File::get(__DIR__ . '/cert/sandbox.cer');
         } else {
             $pubkey = File::get(__DIR__ . '/cert/production.cer');
@@ -158,26 +160,32 @@ class LaravelMpesa
 
     public function getAccessToken()
     {
-        $credentials = base64_encode($this->consumer_key . ':' . $this->consumer_secret);
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $credentials, 'Content-Type: application/json'));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $response = json_decode($response);
-        $access_token = $response->access_token;
-        // \Log::info($access_token);
-        // The above $access_token expires after an hour, find a way to cache it to minimize requests to the server
+        try {
+            $credentials = base64_encode($this->consumer_key . ':' . $this->consumer_secret);
+            $ch = curl_init();
+            // TODO check the endpoint
+            curl_setopt($ch, CURLOPT_URL, 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $credentials, 'Content-Type: application/json'));
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $response = json_decode($response);
+            if (isset($response->errorMessage)) {
+                throw new MpesaException($response->errorMessage);
+            }
+            $access_token = $response->access_token;
+            \Log::info($access_token);
+            // The above $access_token expires after an hour, find a way to cache it to minimize requests to the server
 
-        if (!$access_token) {
-            //throw new Exception("Invalid access token generated");
-            //die;
-            return false;
+            if (!$access_token) {
+                return false;
+            }
+            $this->access_token = $access_token;
+            return $access_token;
+        } catch (\Throwable $th) {
+            throw $th;
         }
 
-        $this->access_token = $access_token;
-        return $access_token;
     }
 
     private function submit_request($url, $data)

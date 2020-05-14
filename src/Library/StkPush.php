@@ -93,10 +93,10 @@ class StkPush extends ApiCore
     public function push($amount = null, $number = null, $reference = null, $description = null)
     {
         $time = Carbon::now()->format('YmdHis');
-        $shortCode = \config('laravel-mpesa.c2b.short_code');
-        $passkey = \config('laravel-mpesa.c2b.passkey');
-        $callback = \config('laravel-mpesa.c2b.stk_callback');
-        $password = \base64_encode($shortCode . $passkey . $time);
+        $shortCode = config('mpesa.c2b.short_code');
+        $passkey = config('mpesa.c2b.passkey');
+        $callback = config('mpesa.c2b.stk_callback');
+        $password = base64_encode($shortCode . $passkey . $time);
         $good_phone = $this->formatPhoneNumber($number ?: $this->number);
         $body = [
             'BusinessShortCode' => $shortCode,
@@ -157,8 +157,8 @@ class StkPush extends ApiCore
             $checkoutRequestID = MpesaStkRequest::find($checkoutRequestID)->CheckoutRequestID;
         }
         $time = Carbon::now()->format('YmdHis');
-        $shortCode = \config('laravel-mpesa.c2b.short_code');
-        $passkey = \config('laravel-mpesa.c2b.passkey');
+        $shortCode = \config('mpesa.c2b.short_code');
+        $passkey = \config('mpesa.c2b.passkey');
         $password = \base64_encode($shortCode . $passkey . $time);
         $body = [
             'BusinessShortCode' => $shortCode,

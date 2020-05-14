@@ -136,8 +136,8 @@ class Mpesa
      */
     public function notification($title, $important = false): void
     {
-        $slack = \config('laravel-mpesa.notifications.slack_web_hook');
-        if (!$important && empty($slack) && \config('laravel-mpesa.notifications.only_important')) {
+        $slack = \config('mpesa.notifications.slack_web_hook');
+        if (!$important && empty($slack) && \config('mpesa.notifications.only_important')) {
             return;
         }
         $payload = [
@@ -145,7 +145,7 @@ class Mpesa
             'title' => $title,
         ];
 
-        \Notification::route('slack', \config('laravel-mpesa.notifications.slack_web_hook'))->notify(new MpesaNotification($payload));
+        \Notification::route('slack', \config('mpesa.notifications.slack_web_hook'))->notify(new MpesaNotification($payload));
     }
 
     /**

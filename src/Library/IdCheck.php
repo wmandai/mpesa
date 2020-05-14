@@ -22,10 +22,10 @@ class IdCheck extends ApiCore
     {
         $number = $this->formatPhoneNumber($number);
         $time = Carbon::now()->format('YmdHis');
-        $shortCode = \config('laravel-mpesa.c2b.short_code');
-        $passkey = \config('laravel-mpesa.c2b.passkey');
-        $defaultCallback = \config('laravel-mpesa.id_validation_callback');
-        $initiator = \config('laravel-mpesa.initiator');
+        $shortCode = \config('mpesa.c2b.short_code');
+        $passkey = \config('mpesa.c2b.passkey');
+        $defaultCallback = \config('mpesa.id_validation_callback');
+        $initiator = \config('mpesa.initiator');
         $password = \base64_encode($shortCode . $passkey . $time);
         $body = [
             'Initiator' => $initiator,

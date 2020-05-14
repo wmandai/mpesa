@@ -62,7 +62,7 @@ class Authenticator
             $this->alt = true;
         }
         $this->generateCredentials();
-        if (config('laravel-mpesa.cache_credentials', false) && !empty($key = $this->getFromCache())) {
+        if (config('mpesa.cache_credentials', false) && !empty($key = $this->getFromCache())) {
             return $key;
         }
         try {
@@ -101,12 +101,12 @@ class Authenticator
      */
     private function generateCredentials(): self
     {
-        $key = \config('laravel-mpesa.c2b.consumer_key');
-        $secret = \config('laravel-mpesa.c2b.consumer_secret');
+        $key = \config('mpesa.c2b.consumer_key');
+        $secret = \config('mpesa.c2b.consumer_secret');
         if ($this->alt) {
             //lazy way to switch to a different app in case of bulk
-            $key = \config('laravel-mpesa.b2c.consumer_key');
-            $secret = \config('laravel-mpesa.b2c.consumer_secret');
+            $key = \config('mpesa.b2c.consumer_key');
+            $secret = \config('mpesa.b2c.consumer_secret');
         }
         $this->credentials = \base64_encode($key . ':' . $secret);
         return $this;

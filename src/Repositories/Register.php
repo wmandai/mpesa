@@ -32,9 +32,9 @@ class Register
      */
     public function doRegister()
     {
-        return $this->registra->register(\config('laravel-mpesa.c2b.short_code'))
-            ->onConfirmation(\config('laravel-mpesa.c2b.confirmation_url'))
-            ->onValidation(\config('laravel-mpesa.c2b.validation_url'))
+        return $this->registra->register(\config('mpesa.c2b.short_code'))
+            ->onConfirmation(\config('mpesa.c2b.confirmation_url'))
+            ->onValidation(\config('mpesa.c2b.validation_url'))
             ->submit();
     }
 }

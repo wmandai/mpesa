@@ -108,10 +108,10 @@ class Simulate extends ApiCore
      */
     public function push($number = null, $amount = null, $reference = null, $command = null)
     {
-        if (!\config('laravel-mpesa.sandbox', true)) {
+        if (!\config('mpesa.sandbox', true)) {
             throw new MpesaException('Cannot simulate a transaction in the live environment.');
         }
-        $shortCode = \config('laravel-mpesa.c2b.short_code');
+        $shortCode = \config('mpesa.c2b.short_code');
         $good_phone = $this->formatPhoneNumber($number ?: $this->number);
         $body = [
             'CommandID' => $command ?: $this->command,

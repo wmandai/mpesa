@@ -5,28 +5,28 @@
  */
 return [
     //Specify the environment mpesa is running, sandbox or production
-     'sandbox' => env('MPESA_SANDBOX', true),
+    'sandbox' => env('MPESA_SANDBOX', true),
 
     /*
-   |--------------------------------------------------------------------------
-   | Cache credentials
-   |--------------------------------------------------------------------------
-   |
-   | If you decide to cache credentials, they will be kept in your app cache
-   | configuration for sometime. Reducing the need for many requests for
-   | generating credentials
-   |
-   */
+    |--------------------------------------------------------------------------
+    | Cache credentials
+    |--------------------------------------------------------------------------
+    |
+    | If you decide to cache credentials, they will be kept in your app cache
+    | configuration for sometime. Reducing the need for many requests for
+    | generating credentials
+    |
+     */
     'cache_credentials' => false,
 
     /*
-   |--------------------------------------------------------------------------
-   | C2B array
-   |--------------------------------------------------------------------------
-   |
-   | If you are accepting payments enter application details and shortcode info
-   |
-   */
+    |--------------------------------------------------------------------------
+    | C2B array
+    |--------------------------------------------------------------------------
+    |
+    | If you are accepting payments enter application details and shortcode info
+    |
+     */
     'c2b' => [
         /*
          * Consumer Key from developer portal
@@ -44,6 +44,8 @@ return [
          * Your receiving paybill or till umber
          */
         'short_code' => env('MPESA_SHORTCODE', ''),
+
+        'lipa_short_code' => env('MPESA_LIPA_SHORTCODE', ''),
         /*
          * Passkey , requested from mpesa
          */
@@ -72,13 +74,13 @@ return [
     ],
 
     /*
-      |--------------------------------------------------------------------------
-      | B2C array
-      |--------------------------------------------------------------------------
-      |
-      | If you are sending payments to customers or b2b
-      |
-      */
+    |--------------------------------------------------------------------------
+    | B2C array
+    |--------------------------------------------------------------------------
+    |
+    | If you are sending payments to customers or b2b
+    |
+     */
     'b2c' => [
         /*
          * Sending app consumer key
@@ -93,10 +95,10 @@ return [
          */
         'short_code' => env('MPESA_SHORTCODE', ''),
         /*
-        * This is the user initiating the transaction, usually from the Mpesa organization portal
-        * Make sure this was the user who was used to 'GO LIVE'
-        * https://org.ke.m-pesa.com/
-        */
+         * This is the user initiating the transaction, usually from the Mpesa organization portal
+         * Make sure this was the user who was used to 'GO LIVE'
+         * https://org.ke.m-pesa.com/
+         */
         'initiator' => env('MPESA_INITIATOR_USERNAME', ''),
         /*
          * The user security credential.
@@ -104,9 +106,9 @@ return [
          * security credential
          */
         'security_credential' => env('MPESA_INITIATOR_PASS', ''),
-       /*
-        * Notification URL for timeout
-        */
+        /*
+         * Notification URL for timeout
+         */
         'timeout_url' => env('APP_URL') . '/payments/callbacks/timeout/',
         /**
          * Result URL
@@ -128,5 +130,5 @@ return [
          */
         'only_important' => false,
     ],
-    
+
 ];

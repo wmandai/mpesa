@@ -19,6 +19,7 @@
         "illuminate/support": "^6.0|^7.0"
     },
     "require-dev": {
+        "orchestra/testbench": "^5.0",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8.5"
     },
@@ -49,7 +50,7 @@
                 "Wmandai\\Mpesa\\LaravelMpesaServiceProvider"
             ],
             "aliases": {
-                "Mpesa": "Wmandai\\Mpesa\\Facades\\Mpesa",
+                "Mpesa": "Wmandai\\Mpesa\\Facades\\MpesaFacade",
                 "B2C": "Wmandai\\Mpesa\\Facades\\B2C",
                 "Identity": "Wmandai\\Mpesa\\Facades\\Identity",
                 "Registrar": "Wmandai\\Mpesa\\Facades\\Registrar",
