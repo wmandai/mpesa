@@ -6,16 +6,8 @@ use Illuminate\Http\Request;
 use Wmandai\Mpesa\Facades\STK;
 use Wmandai\Mpesa\Http\Requests\StkRequest;
 
-/**
- * Class StkController
- * @package Wmandai\Mpesa\Http\Controllers
- */
 class StkController extends Controller
 {
-    /**
-     * @param StkRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function initiatePush(StkRequest $request)
     {
         try {
@@ -32,11 +24,11 @@ class StkController extends Controller
         }
         return response()->json($stk);
     }
-
     /**
-     * @param $reference
+     * @param  $reference
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function stkStatus($reference)
     {
         return response()->json(STK::validate($reference));

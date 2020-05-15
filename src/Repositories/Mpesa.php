@@ -134,6 +134,7 @@ class Mpesa
      * @param $title
      * @param bool $important
      */
+    // TODO notify via slack incoming stk callback
     public function notification($title, $important = false): void
     {
         $slack = \config('mpesa.notifications.slack_web_hook');
@@ -153,7 +154,6 @@ class Mpesa
      */
     public function queryStkStatus(): array
     {
-        /** @var MpesaStkRequest[] $stk */
         $stk = MpesaStkRequest::whereDoesntHave('response')->get();
         $success = $errors = [];
         foreach ($stk as $item) {

@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Database\Entities;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wmandai\Mpesa\Database\Entities\MpesaStkRequest
+ * Model to save STK Push requests to database
  *
  * @property int $id
  * @property string $phone

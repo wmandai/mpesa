@@ -3,6 +3,7 @@
 namespace Wmandai\Mpesa\Library;
 
 use GuzzleHttp\ClientInterface;
+use Wmandai\Mpesa\Library\Authenticator;
 
 /**
  * Class Core
@@ -24,7 +25,7 @@ class Core
      * Core constructor.
      *
      * @param  ClientInterface $client
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      */
     public function __construct(ClientInterface $client)
     {

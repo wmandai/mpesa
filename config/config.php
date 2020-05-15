@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * You can place your custom package configuration in here.
  */
 return [
@@ -44,8 +44,6 @@ return [
          * Your receiving paybill or till umber
          */
         'short_code' => env('MPESA_SHORTCODE', ''),
-
-        'lipa_short_code' => env('MPESA_LIPA_SHORTCODE', ''),
         /*
          * Passkey , requested from mpesa
          */

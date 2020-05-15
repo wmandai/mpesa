@@ -68,7 +68,7 @@ class ApiCore
      * @param array $body
      * @param string $endpoint
      * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
      */

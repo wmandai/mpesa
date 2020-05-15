@@ -9,8 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
 
 /**
- * Class StkPushRequestedEvent
- * @package Wmandai\Mpesa\Events
+ * Event will be trigged when STK push is requested
  */
 class StkPushRequestedEvent
 {

@@ -86,7 +86,7 @@ class StkPush extends ApiCore
      * @param null|string $reference
      * @param null|string $description
      * @return mixed
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Exception
      */
@@ -118,7 +118,7 @@ class StkPush extends ApiCore
     /**
      * @param array $body
      * @param array $response
-     * @return MpesaStkRequest|\Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model
      * @throws \Exception
      * @throws MpesaException
      */

@@ -2,15 +2,10 @@
 
 namespace Wmandai\Mpesa\Http\Middlewares;
 
-/**
- * Class MobileMoneyCors
- * @package Wmandai\Mpesa\Http\Middlewares
- */
 class MobileMoneyCors
 {
     /**
      * Handle an incoming request.
-     *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
      * @return mixed

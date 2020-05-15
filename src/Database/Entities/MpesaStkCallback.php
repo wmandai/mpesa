@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Database\Entities;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wmandai\Mpesa\Database\Entities\MpesaStkCallback
+ * Save STK Callback data to database
  *
  * @property int $id
  * @property string $MerchantRequestID
@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Wmandai\Mpesa\Database\Entities\MpesaStkRequest $request
- * @mixin \Eloquent
  */
 class MpesaStkCallback extends Model
 {

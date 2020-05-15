@@ -6,10 +6,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use Wmandai\Mpesa\Library\RegisterUrl;
 
-/**
- * Class RegisterUrlCommand
- * @package Wmandai\Mpesa\Commands
- */
 class RegisterUrlCommand extends Command
 {
     /**
@@ -25,10 +21,8 @@ class RegisterUrlCommand extends Command
      * @var string
      */
     protected $description = 'Register mpesa validation and confirmation URL';
-    /**
-     * @var RegisterUrl
-     */
-    private $registerUrl;
+
+    protected $registerUrl;
 
     /**
      * Create a new command instance.
@@ -55,7 +49,6 @@ class RegisterUrlCommand extends Command
             ->onConfirmation($this->askConfirmationUrl())
             ->onValidation($this->askValidationUrl())
             ->submit();
-        dd($register);
     }
 
     private function askShortcode(): string

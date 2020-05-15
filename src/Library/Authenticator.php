@@ -46,7 +46,6 @@ class Authenticator
     public function __construct(Core $core)
     {
         $this->engine = $core;
-        $this->endpoint = EndpointsRepository::build('auth');
         self::$instance = $this;
     }
 
@@ -118,6 +117,7 @@ class Authenticator
      */
     private function makeRequest(): ResponseInterface
     {
+        $this->endpoint = EndpointsRepository::build('auth');
         return $this->engine->client->request(
             'GET',
             $this->endpoint,
