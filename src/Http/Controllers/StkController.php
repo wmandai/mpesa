@@ -28,7 +28,6 @@ class StkController extends Controller
      * @param  $reference
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function stkStatus($reference)
     {
         return response()->json(STK::validate($reference));

@@ -80,7 +80,7 @@ class MpesaController extends Controller
      */
     public function confirmation(Request $request)
     {
-        $this->repository->notification('MPESA Confirmation: *C2B*', true);
+        // $this->repository->notification('MPESA Confirmation: *C2B*', true);
         $this->repository->processConfirmation(json_encode($request->all()));
         $resp = [
             'ResultCode' => 0,
@@ -94,7 +94,7 @@ class MpesaController extends Controller
      */
     public function callback()
     {
-        $this->repository->notification('MPESA Callback: *C2B*', true);
+        // $this->repository->notification('MPESA Callback: *C2B*', true);
         $resp = [
             'ResultCode' => 0,
             'ResultDesc' => 'Callback received successfully',
@@ -124,7 +124,7 @@ class MpesaController extends Controller
      */
     public function validatePayment()
     {
-        $this->repository->notification('MPESA Validate Payment URL: *C2B*');
+        // $this->repository->notification('MPESA Validate Payment URL: *C2B*');
         $resp = [
             'ResultCode' => 0,
             'ResultDesc' => 'Validation passed successfully',
