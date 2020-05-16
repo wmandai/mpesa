@@ -5,9 +5,9 @@ namespace Wmandai\Mpesa\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class B2C
- * @package Wmandai\Mpesa\Facades
+ * B2C Facade
  */
+
 class B2C extends Facade
 {
     /**

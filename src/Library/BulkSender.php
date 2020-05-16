@@ -64,7 +64,7 @@ class BulkSender extends ApiCore
      * @param int|null $amount
      * @param string|null $remarks
      * @return mixed
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws MpesaException
      */
@@ -97,7 +97,7 @@ class BulkSender extends ApiCore
 
     /**
      * @return mixed
-     * @throws \Wmandai\MobileMoney\Mpesa\Exceptions\MpesaException
+     * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
      */

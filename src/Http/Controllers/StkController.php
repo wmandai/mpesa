@@ -26,6 +26,7 @@ class StkController extends Controller
     }
     /**
      * @param  $reference
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function stkStatus($reference)

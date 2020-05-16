@@ -4,6 +4,9 @@ namespace Wmandai\Mpesa\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * MPESA Facade
+ */
 class MpesaFacade extends Facade
 {
     /**

@@ -9,60 +9,71 @@ class LaravelMpesa
 
     /**
      * The common part of the MPesa API endpoints
+     *
      * @var string $base_url
      */
-    private $base_url;
+    protected $base_url;
     /**
      * The consumer key
+     *
      * @var string $consumer_key
      */
     public $consumer_key;
     /**
      * The consumer key secret
+     *
      * @var string $consumer_secret
      */
     public $consumer_secret;
     /**
      * The MPesa Paybill number
+     *
      * @var int $paybill
      */
     public $paybill;
     /**
      * The Lipa Na MPesa paybill number
+     *
      * @var int $lipa_na_mpesa
      */
     public $lipa_na_mpesa;
     /**
      * The Lipa Na MPesa paybill number SAG Key
+     *
      * @var string $lipa_na_mpesa_key
      */
     public $lipa_na_mpesa_key;
     /**
      * The Mpesa portal Username
+     *
      * @var string $initiator_username
      */
     public $initiator_username;
     /**
      * The Mpesa portal Password
+     *
      * @var string $initiator_password
      */
     public $initiator_password;
     /**
      * The Callback common part of the URL eg "https://domain.com/callbacks/"
+     *
      * @var string $initiator_password
      */
-    private $callback_baseurl;
+    protected $callback_baseurl;
     /**
      * The test phone number provided by safaricom. For developers
+     *
      * @var string $test_msisdn
      */
-    private $test_msisdn;
+    protected $test_msisdn;
     /**
      * The signed API credentials
+     *
      * @var string $cred
      */
-    private $cred;
-    private $access_token;
+    protected $cred;
+    protected $access_token;
 
     /*Callbacks*/
     public $bctimeout;
@@ -84,7 +95,9 @@ class LaravelMpesa
      * Initializes the class with an array of API values.
      *
      * @param array $config
+     *
      * @return void
+     *
      * @throws exception if the values array is not valid
      */
 
@@ -188,7 +201,7 @@ class LaravelMpesa
 
     }
 
-    private function submit_request($url, $data)
+    protected function submitRequest($url, $data)
     {
         // Returns cURL response
 
@@ -222,7 +235,7 @@ class LaravelMpesa
      *
      * @param int $amount The amount to send to the client
      * @param int $phone The phone number of the client in the format 2547xxxxxxxx
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
 
     public function b2c($amount, $phone, $command_id, $remarks)
@@ -243,7 +256,7 @@ class LaravelMpesa
         );
         $data = json_encode($request_data);
         $url = $this->base_url . 'b2c/v1/paymentrequest';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
         //  \Log::info($response);
     }
@@ -255,9 +268,8 @@ class LaravelMpesa
      *
      * @param int $amount The amount to send to the business
      * @param int $shortcode The shortcode of the business to send to
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
-
     public function b2b($amount, $shortcode)
     {
         $request_data = array(
@@ -276,7 +288,7 @@ class LaravelMpesa
         );
         $data = json_encode($request_data);
         $url = $this->base_url . 'b2b/v1/paymentrequest';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 
@@ -287,7 +299,7 @@ class LaravelMpesa
      *
      * @param string $confirmURL The local URL that MPesa calls to confirm a payment
      * @param string $ValidationURL The local URL that MPesa calls to validate a payment
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
 
     public function c2bRegisterUrls()
@@ -302,7 +314,7 @@ class LaravelMpesa
         //header('Content-Type: application/json');
 
         $url = $this->base_url . 'c2b/v1/registerurl';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         //\Log::info($response);
         return $response;
     }
@@ -315,9 +327,8 @@ class LaravelMpesa
      * @param int $amount The amount to send to Paybill number
      * @param int $msisdn A dummy Safaricom phone number to simulate transaction in the format 2547xxxxxxxx
      * @param string $ref A reference name for the transaction
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
-
     public function simulateC2B($amount, $msisdn, $ref)
     {
         $data = array(
@@ -329,7 +340,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'c2b/v1/simulate';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 
@@ -338,9 +349,9 @@ class LaravelMpesa
      *
      * Check Paybill balance
      *
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
-    public function check_balance()
+    public function checkBalance()
     {
         $data = array(
             'CommandID' => 'AccountBalance',
@@ -354,7 +365,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'accountbalance/v1/query';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 
@@ -364,10 +375,9 @@ class LaravelMpesa
      * This method is used to check a transaction status
      *
      * @param string $transaction ID eg LH7819VXPE
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
-
-    public function status_request($transaction = 'LH7819VXPE')
+    public function statusRequest($transaction = 'LH7819VXPE')
     {
         $data = array(
             'CommandID' => 'TransactionStatusQuery',
@@ -383,7 +393,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'transactionstatus/v1/query';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 
@@ -395,7 +405,7 @@ class LaravelMpesa
      * @param int $receiver Phone number in the format 2547xxxxxxxx
      * @param string $trx_id Transaction ID of the Transaction you want to reverse eg LH7819VXPE
      * @param int $amount The amount from the transaction to reverse
-     * @return object Curl Response from submit_request, FALSE on failure
+     * @return object Curl Response from submitRequest, FALSE on failure
      */
 
     public function reverse_transaction($receiver, $trx_id, $amount)
@@ -414,7 +424,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'reversal/v1/request';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 
@@ -447,7 +457,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'stkpush/v1/processrequest';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         $result = json_decode($response);
         dd($result);
         //print_r($result);
@@ -477,7 +487,7 @@ class LaravelMpesa
         );
         $data = json_encode($data);
         $url = $this->base_url . 'stkpushquery/v1/query';
-        $response = $this->submit_request($url, $data);
+        $response = $this->submitRequest($url, $data);
         return $response;
     }
 }

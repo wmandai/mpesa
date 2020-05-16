@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+date_default_timezone_set('Africa/Nairobi');
 
 Route::group([
     'prefix' => 'payments/callbacks',

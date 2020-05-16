@@ -1,8 +1,17 @@
 <?php
-
 /**
- * You can place your custom package configuration in here.
+ * Laravel MPESA configuration file
+ *
+ * PHP version 7
+ *
+ * @category  Configuration
+ * @package   LaravelMPESA
+ * @author    William Mandai <wm@gitbench.com>
+ * @copyright 2020 Credits https://github.com/samerior/mobile-money
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link      https://github.com/wmandai/mpesa
  */
+
 return [
     //Specify the environment mpesa is running, sandbox or production
     'sandbox' => env('MPESA_SANDBOX', true),
@@ -40,10 +49,12 @@ return [
          * HTTP callback method [POST,GET]
          */
         'callback_method' => 'POST',
-        /*
-         * Your receiving paybill or till umber
-         */
+
+        // MPESA Paybill Number or Lipa na MPESA number
+        // If you are using Paybill enter Short Code e.g 601426
+        // If using Lipa na MPESA enter Short Code e.g 174379
         'short_code' => env('MPESA_SHORTCODE', ''),
+
         /*
          * Passkey , requested from mpesa
          */
@@ -54,7 +65,7 @@ return [
          * ---------------------------------------------------------------------------------------
          * Please update your app url in .env file
          * Note: This package has already routes for handling this callback.
-         * You should leave this values as they are unless you know what you are doing
+         * Change only if necessary
          */
         /*
          * Stk callback URL
@@ -93,14 +104,16 @@ return [
          */
         'short_code' => env('MPESA_SHORTCODE', ''),
         /*
-         * This is the user initiating the transaction, usually from the Mpesa organization portal
+         * This is the user initiating the transaction,
+         * usually from the Mpesa organization portal
          * Make sure this was the user who was used to 'GO LIVE'
          * https://org.ke.m-pesa.com/
          */
         'initiator' => env('MPESA_INITIATOR_USERNAME', ''),
         /*
          * The user security credential.
-         * Go to https://developer.safaricom.co.ke/test_credentials and paste your initiator password to generate
+         * Go to https://developer.safaricom.co.ke/test_credentials and
+         * paste your initiator password to generate
          * security credential
          */
         'security_credential' => env('MPESA_INITIATOR_PASS', ''),

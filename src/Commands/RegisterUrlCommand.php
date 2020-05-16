@@ -1,5 +1,4 @@
 <?php
-
 namespace Wmandai\Mpesa\Commands;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -27,7 +26,7 @@ class RegisterUrlCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param RegisterUrl $registerUrl
+     * @param mixed $registerUrl \Wmandai\Mpesa\Library\RegisterUrl
      */
     public function __construct(RegisterUrl $registerUrl)
     {
@@ -49,20 +48,21 @@ class RegisterUrlCommand extends Command
             ->onConfirmation($this->askConfirmationUrl())
             ->onValidation($this->askValidationUrl())
             ->submit();
+        $this->info('URLs registered succesfully');
     }
 
-    private function askShortcode(): string
+    protected function askShortcode(): string
     {
-        return $this->ask('What is your shortcode', config('mpesa.c2b.short_code'));
+        return $this->ask('What is your shortcode', config('mpesa.c2b.shortcode'));
     }
 
-    private function askConfirmationUrl(): string
+    protected function askConfirmationUrl(): string
     {
-        return $this->ask('Confirmation Url', \config('mpesa.c2b.confirmation_url'));
+        return $this->ask('Confirmation Url', config('mpesa.c2b.confirmation_url'));
     }
 
-    private function askValidationUrl(): string
+    protected function askValidationUrl(): string
     {
-        return $this->ask('Validation Url', \config('mpesa.c2b.validation_url'));
+        return $this->ask('Validation Url', config('mpesa.c2b.validation_url'));
     }
 }

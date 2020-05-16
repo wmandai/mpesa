@@ -7,18 +7,22 @@ use Wmandai\Mpesa\Events\QueueTimeoutEvent;
 use Wmandai\Mpesa\Repositories\Mpesa;
 
 /**
- * Class MpesaController
+ * MpesaController Class
+ *
  * @package Wmandai\Mpesa\Http\Controllers
  */
 class MpesaController extends Controller
 {
     /**
+     * MPESA Repository
+     *
      * @var Mpesa
      */
-    private $repository;
+    protected $repository;
 
     /**
      * MpesaController constructor.
+     *
      * @param Mpesa $repository
      */
     public function __construct(Mpesa $repository)
@@ -65,7 +69,7 @@ class MpesaController extends Controller
      */
     public function paymentCallback($initiator)
     {
-        $this->repository->notification('Incoming payment callback: *' . $initiator . '*');
+        // $this->repository->notification('Incoming payment callback: *' . $initiator . '*');
         return response()->json(
             [
                 'ResponseCode' => '00000000',
@@ -80,6 +84,7 @@ class MpesaController extends Controller
      */
     public function confirmation(Request $request)
     {
+        \Log::error($request->all());
         // $this->repository->notification('MPESA Confirmation: *C2B*', true);
         $this->repository->processConfirmation(json_encode($request->all()));
         $resp = [
@@ -103,7 +108,7 @@ class MpesaController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function stkCallback(Request $request)
@@ -124,6 +129,7 @@ class MpesaController extends Controller
      */
     public function validatePayment()
     {
+        \Log::error(request()->all());
         // $this->repository->notification('MPESA Validate Payment URL: *C2B*');
         $resp = [
             'ResultCode' => 0,
