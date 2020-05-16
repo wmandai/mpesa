@@ -12,6 +12,7 @@ use Wmandai\Mpesa\Repositories\Generator;
 
 /**
  * Class StkPush
+ *
  * @package Wmandai\Mpesa\Library
  */
 class StkPush extends ApiCore
@@ -35,6 +36,7 @@ class StkPush extends ApiCore
 
     /**
      * @param string $amount
+     *
      * @return $this
      * @throws \Exception
      * @throws MpesaException
@@ -50,6 +52,7 @@ class StkPush extends ApiCore
 
     /**
      * @param string $number
+     *
      * @return $this
      */
     public function from($number): self
@@ -63,6 +66,7 @@ class StkPush extends ApiCore
      *
      * @param string $reference
      * @param string $description
+     *
      * @return $this
      * @throws \Exception
      * @throws MpesaException
@@ -85,6 +89,7 @@ class StkPush extends ApiCore
      * @param null|string $number
      * @param null|string $reference
      * @param null|string $description
+     *
      * @return mixed
      * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -118,11 +123,12 @@ class StkPush extends ApiCore
     /**
      * @param array $body
      * @param array $response
+     *
      * @return \Illuminate\Database\Eloquent\Model
      * @throws \Exception
      * @throws MpesaException
      */
-    private function saveStkRequest($body, $response)
+    public function saveStkRequest($body, $response)
     {
         if ($response['ResponseCode'] == 0) {
             $incoming = [

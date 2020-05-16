@@ -6,6 +6,7 @@ use Wmandai\Mpesa\Exceptions\MpesaException;
 
 /**
  * Class RegisterUrl
+ *
  * @package Wmandai\Mpesa\Library
  */
 class RegisterUrl extends ApiCore
@@ -37,6 +38,7 @@ class RegisterUrl extends ApiCore
 
     /**
      * @param $shortCode
+     *
      * @return $this
      */
     public function register($shortCode)
@@ -47,6 +49,7 @@ class RegisterUrl extends ApiCore
 
     /**
      * @param string $validationURL
+     *
      * @return $this
      */
     public function onValidation($validationURL)
@@ -57,6 +60,7 @@ class RegisterUrl extends ApiCore
 
     /**
      * @param $confirmationURL
+     *
      * @return $this
      */
     public function onConfirmation($confirmationURL)
@@ -67,6 +71,7 @@ class RegisterUrl extends ApiCore
 
     /**
      * @param string $onTimeout
+     *
      * @return $this
      * @throws \Exception
      * @throws MpesaException
@@ -85,6 +90,7 @@ class RegisterUrl extends ApiCore
      * @param string|null $confirmationURL
      * @param string|null $validationURL
      * @param string|null $onTimeout
+     *
      * @return mixed
      * @throws MpesaException
      * @throws \Exception

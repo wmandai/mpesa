@@ -19,7 +19,7 @@ class ApiCore
     /**
      * @var Core
      */
-    private $engine;
+    public $engine;
     /**
      * @var bool
      */
@@ -44,6 +44,7 @@ class ApiCore
     /**
      * @param string $number
      * @param bool $strip_plus
+     *
      * @return string
      */
     protected function formatPhoneNumber($number, $strip_plus = true): string
@@ -67,7 +68,9 @@ class ApiCore
     /**
      * @param array $body
      * @param string $endpoint
+     *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \Exception
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -90,6 +93,7 @@ class ApiCore
     /**
      * @param array $body
      * @param string $endpoint
+     *
      * @return mixed
      * @throws MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -111,9 +115,10 @@ class ApiCore
 
     /**
      * @param ClientException $exception
+     *
      * @return MpesaException
      */
-    private function generateException(ClientException $exception): MpesaException
+    public function generateException(ClientException $exception): MpesaException
     {
         return new MpesaException($exception->getResponse()->getBody());
     }

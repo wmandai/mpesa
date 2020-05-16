@@ -405,10 +405,11 @@ class LaravelMpesa
      * @param int $receiver Phone number in the format 2547xxxxxxxx
      * @param string $trx_id Transaction ID of the Transaction you want to reverse eg LH7819VXPE
      * @param int $amount The amount from the transaction to reverse
+     *
      * @return object Curl Response from submitRequest, FALSE on failure
      */
 
-    public function reverse_transaction($receiver, $trx_id, $amount)
+    public function reverseTransaction($receiver, $trx_id, $amount)
     {
         $data = array(
             'CommandID' => 'TransactionReversal',
@@ -433,7 +434,6 @@ class LaravelMpesa
      *     LNMO APIs
      *
      * *******************************************************************/
-
     public function express($amount, $phone, $ref = "Payment", $desc = "Payment")
     {
         if (!is_numeric($amount) || $amount < 1 || !is_numeric($phone)) {
@@ -462,14 +462,14 @@ class LaravelMpesa
         dd($result);
         //print_r($result);
         if ($c_id = $result->CheckoutRequestID) {
-            return $this->lnmo_query($c_id);
+            return $this->lnmoQuery($c_id);
         } else {
             return false;
         }
         //return $res;
     }
 
-    private function lnmo_query($checkoutRequestID = null)
+    public function lnmoQuery($checkoutRequestID = null)
     {
         $timestamp = date('YmdHis');
         $passwd = base64_encode($this->lipa_na_mpesa . $this->lipa_na_mpesa_key . $timestamp);

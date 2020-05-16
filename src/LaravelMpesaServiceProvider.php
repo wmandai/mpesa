@@ -111,7 +111,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
     /**
      * Register facade accessors
      */
-    private function registerFacades()
+    protected function registerFacades()
     {
         $this->app->bind(
             'mpesa_stk',
@@ -142,7 +142,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
     /**
      * Register events
      */
-    private function registerEvents()
+    public function registerEvents()
     {
         Event::listen(StkPushPaymentSuccessEvent::class, StkPaymentSuccessful::class);
         Event::listen(StkPushPaymentFailedEvent::class, StkPaymentFailed::class);

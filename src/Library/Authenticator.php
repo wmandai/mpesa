@@ -35,12 +35,13 @@ class Authenticator
     /**
      * @var string
      */
-    private $credentials;
+    public $credentials;
 
     /**
      * Authenticator constructor.
      *
      * @param  Core $core
+     *
      * @throws MpesaException
      */
     public function __construct(Core $core)
@@ -51,6 +52,7 @@ class Authenticator
 
     /**
      * @param bool $bulk
+     *
      * @return string
      * @throws MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -83,9 +85,10 @@ class Authenticator
 
     /**
      * @param $reason
+     *
      * @return MpesaException
      */
-    private function generateException($reason): ?MpesaException
+    public function generateException($reason): ?MpesaException
     {
         switch (\strtolower($reason)) {
             case 'bad request: invalid credentials':
@@ -98,7 +101,7 @@ class Authenticator
     /**
      * @return $this
      */
-    private function generateCredentials(): self
+    public function generateCredentials(): self
     {
         $key = \config('mpesa.c2b.consumer_key');
         $secret = \config('mpesa.c2b.consumer_secret');
@@ -115,7 +118,7 @@ class Authenticator
      * @return ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    private function makeRequest(): ResponseInterface
+    public function makeRequest(): ResponseInterface
     {
         $this->endpoint = EndpointsRepository::build('auth');
         return $this->engine->client->request(
@@ -133,7 +136,7 @@ class Authenticator
     /**
      * @return mixed
      */
-    private function getFromCache()
+    public function getFromCache()
     {
         return Cache::get($this->credentials);
     }
@@ -143,7 +146,7 @@ class Authenticator
      *
      * @param $credentials
      */
-    private function saveCredentials($credentials)
+    public function saveCredentials($credentials)
     {
         Cache::put($this->credentials, $credentials->access_token, 30);
     }

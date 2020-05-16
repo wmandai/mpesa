@@ -18,12 +18,14 @@ use Wmandai\Mpesa\Notifications\MpesaNotification;
 
 /**
  * Class Mpesa
+ *
  * @package Wmandai\Mpesa\Repositories
  */
 class Mpesa
 {
     /**
      * @param string $json
+     *
      * @return $this|array|\Illuminate\Database\Eloquent\Model
      */
     public function processStkPushCallback($json)
@@ -52,6 +54,7 @@ class Mpesa
     /**
      * @param $response
      * @param array $body
+     *
      * @return MpesaBulkPaymentRequest|\Illuminate\Database\Eloquent\Model
      */
     public function saveB2cRequest($response, $body = [])
@@ -69,6 +72,7 @@ class Mpesa
 
     /**
      * @param string $json
+     *
      * @return $this|\Illuminate\Database\Eloquent\Model
      */
     public function processConfirmation($json)
@@ -82,7 +86,7 @@ class Mpesa
     /**
      * @return MpesaBulkPaymentResponse|\Illuminate\Database\Eloquent\Model
      */
-    private function handleB2cResult()
+    public function handleB2cResult()
     {
         $data = request('Result');
 
@@ -95,7 +99,7 @@ class Mpesa
             'ResultType', 'ResultCode', 'ResultDesc', 'OriginatorConversationID', 'ConversationID', 'TransactionID',
         ];
         $seek = ['OriginatorConversationID' => $data['OriginatorConversationID']];
-        /** @var MpesaBulkPaymentResponse $response */
+
         $response = null;
         if ($data['ResultCode'] !== 0) {
             $response = MpesaBulkPaymentResponse::updateOrCreate($seek, Arr::only($data, $common));
@@ -111,7 +115,7 @@ class Mpesa
         return $response;
     }
 
-    private function saveResultParams(array $params, MpesaBulkPaymentResponse $response): \Illuminate\Database\Eloquent\Model
+    public function saveResultParams(array $params, MpesaBulkPaymentResponse $response): \Illuminate\Database\Eloquent\Model
     {
         $params_payload = $params['ResultParameter'];
         $new_params = Arr::pluck($params_payload, 'Value', 'Key');
@@ -120,6 +124,7 @@ class Mpesa
 
     /**
      * @param string|null $initiator
+     *
      * @return MpesaBulkPaymentResponse|void
      */
     public function handleResult($initiator = null)
@@ -183,9 +188,10 @@ class Mpesa
     /**
      * @param MpesaStkCallback $stkCallback
      * @param array $response
+     *
      * @return MpesaStkCallback
      */
-    private function fireStkEvent(MpesaStkCallback $stkCallback, $response): MpesaStkCallback
+    public function fireStkEvent(MpesaStkCallback $stkCallback, $response): MpesaStkCallback
     {
         if ($stkCallback->ResultCode == 0) {
             event(new StkPushPaymentSuccessEvent($stkCallback, $response));

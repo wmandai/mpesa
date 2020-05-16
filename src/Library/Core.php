@@ -25,6 +25,7 @@ class Core
      * Core constructor.
      *
      * @param  ClientInterface $client
+     *
      * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      */
     public function __construct(ClientInterface $client)

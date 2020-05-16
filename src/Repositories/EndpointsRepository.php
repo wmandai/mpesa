@@ -14,11 +14,12 @@ class EndpointsRepository
 
     /**
      * @param string $section
+     *
      * @return string
      * @throws \Exception
      * @throws MpesaException
      */
-    private static function getEndpoint($section): string
+    public static function getEndpoint($section): string
     {
         $list = [
             'auth' => 'oauth/v1/generate?grant_type=client_credentials',
@@ -40,9 +41,10 @@ class EndpointsRepository
 
     /**
      * @param string $suffix
+     *
      * @return string
      */
-    private static function getUrl($suffix): string
+    public static function getUrl($suffix): string
     {
         $baseEndpoint = 'https://api.safaricom.co.ke/';
         if (config('mpesa.sandbox')) {
@@ -53,6 +55,7 @@ class EndpointsRepository
 
     /**
      * @param $endpoint
+     *
      * @return string
      * @throws \Exception
      * @throws MpesaException

@@ -15,24 +15,25 @@ class BulkSender extends ApiCore
     /**
      * @var string
      */
-    private $number;
+    public $number;
     /**
      * @var int
      */
-    private $amount;
+    public $amount;
     /**
      * @var string
      */
-    private $remarks = 'Some remarks';
+    public $remarks = 'Some remarks';
     /**
      * @var int
      */
-    private $trials = 3;
+    public $trials = 3;
 
     /**
      * Set number to receive the funds
      *
      * @param string $number
+     *
      * @return $this
      */
     public function to($number): self
@@ -51,6 +52,7 @@ class BulkSender extends ApiCore
      * The amount to transact
      *
      * @param  $amount
+     *
      * @return $this
      */
     public function amount($amount): self
@@ -63,6 +65,7 @@ class BulkSender extends ApiCore
      * @param string|null $number
      * @param int|null $amount
      * @param string|null $remarks
+     *
      * @return mixed
      * @throws \Wmandai\Mpesa\Exceptions\MpesaException
      * @throws \GuzzleHttp\Exception\GuzzleException
