@@ -2,6 +2,7 @@
 
 namespace Wmandai\Mpesa;
 
+use Illuminate\Support\Facades\File;
 use Wmandai\Mpesa\Exceptions\MpesaException;
 
 class LaravelMpesa
@@ -108,7 +109,8 @@ class LaravelMpesa
         } else {
             $this->base_url = 'https://api.safaricom.co.ke/mpesa/';
         }
-        //Base URL for the API endpoints. This is basically the 'common' part of the API endpoints
+        // Base URL for the API endpoints.
+        // This is basically the 'common' part of the API endpoints
 
         //App Key. Get it at https://developer.safaricom.co.ke
         $this->consumer_key = config('mpesa.c2b.consumer_key');
@@ -437,7 +439,7 @@ class LaravelMpesa
     public function express($amount, $phone, $ref = "Payment", $desc = "Payment")
     {
         if (!is_numeric($amount) || $amount < 1 || !is_numeric($phone)) {
-            throw new Exception("Invalid amount and/or phone number. Amount should be 10 or more, phone number should be in the format 254xxxxxxxx");
+            throw new \Exception("Invalid amount and/or phone number. Amount should be 10 or more, phone number should be in the format 254xxxxxxxx");
             return false;
         }
         $timestamp = date('YmdHis');
