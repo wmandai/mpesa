@@ -199,7 +199,7 @@ class LaravelMpesa
      *
      * @param string $url The API endpoint URL
      * @param mixed $data The data to POST to the endpoint $url
-     * @return object|boolean Curl response or FALSE on failure
+     * @return boolean|string Curl response or FALSE on failure
      * @throws exception if the Access Token is not valid
      */
 
