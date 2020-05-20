@@ -19,11 +19,11 @@ use Wmandai\Mpesa\Library\Core;
 use Wmandai\Mpesa\Library\IdCheck;
 use Wmandai\Mpesa\Library\RegisterUrl;
 use Wmandai\Mpesa\Library\StkPush;
+use Wmandai\Mpesa\Listeners\B2CFailedListener;
+use Wmandai\Mpesa\Listeners\B2CSuccessListener;
 use Wmandai\Mpesa\Listeners\C2bPaymentConfirmation;
 use Wmandai\Mpesa\Listeners\StkPaymentFailed;
 use Wmandai\Mpesa\Listeners\StkPaymentSuccessful;
-use Wmandai\src\Mpesa\Listeners\B2CFailedListener;
-use Wmandai\src\Mpesa\Listeners\B2CSuccessListener;
 
 class LaravelMpesaServiceProvider extends ServiceProvider
 {

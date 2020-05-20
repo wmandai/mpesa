@@ -7,6 +7,7 @@ use Wmandai\Mpesa\Library\Simulate;
 
 if (!function_exists('mpesa_balance')) {
     /**
+     * @method \Wmandai\Mpesa\Library\BulkSender balance()
      * @return mixed
      */
     function mpesa_balance()
@@ -16,6 +17,7 @@ if (!function_exists('mpesa_balance')) {
 }
 if (!function_exists('mpesa_send')) {
     /**
+     * @method \Wmandai\Mpesa\Library\BulkSender send()
      * @param string $phone
      * @param int $amount
      * @param $remarks
@@ -28,6 +30,7 @@ if (!function_exists('mpesa_send')) {
 }
 if (!function_exists('mpesa_id_check')) {
     /**
+     * @method \Wmandai\Mpesa\Library\IdCheck validate()
      * @param string $phone
      * @return mixed
      */
@@ -38,6 +41,7 @@ if (!function_exists('mpesa_id_check')) {
 }
 if (!function_exists('mpesa_stk_status')) {
     /**
+     * @method \Wmandai\Mpesa\Library\StkPush validate()
      * @param int $id
      * @return mixed
      */
@@ -48,6 +52,7 @@ if (!function_exists('mpesa_stk_status')) {
 }
 if (!function_exists('mpesa_request')) {
     /**
+     * @method \Wmandai\Mpesa\Library\STKPush push()
      * @param string $phone
      * @param int $amount
      * @param string|null $reference
@@ -61,6 +66,7 @@ if (!function_exists('mpesa_request')) {
 }
 if (!function_exists('mpesa_validate')) {
     /**
+     * @method \Wmandai\Mpesa\Library\StkPush validate()
      * @param string|int $id
      * @return mixed
      */
@@ -71,6 +77,7 @@ if (!function_exists('mpesa_validate')) {
 }
 if (!function_exists('mpesa_simulate')) {
     /**
+     * @method \Wmandai\Mpesa\Library\Simulate push()
      * @param int $phone
      * @param string $amount
      * @return mixed

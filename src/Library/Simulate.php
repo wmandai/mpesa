@@ -16,7 +16,7 @@ class Simulate extends ApiCore
      */
     private $amount;
     /**
-     * @var int
+     * @var string
      */
     private $number;
     /**
@@ -29,6 +29,22 @@ class Simulate extends ApiCore
      */
     private $reference = 'Testing';
 
+    const VALID_COMMANDS = [
+        'TransactionReversal',
+        'SalaryPayment',
+        'BusinessPayment',
+        'PromotionPayment',
+        'AccountBalance',
+        'CustomerPayBillOnline',
+        'TransactionStatusQuery',
+        'CheckIdentity',
+        'BusinessPayBill',
+        'BusinessBuyGoods',
+        'DisburseFundsToBusiness',
+        'BusinessToBusinessTransfer',
+        'BusinessTransferFromMMFToUtility',
+    ];
+
     /**
      * Set the request amount to be deducted.
      *
@@ -40,7 +56,7 @@ class Simulate extends ApiCore
      */
     public function request($amount): self
     {
-        if (!\is_numeric($amount)) {
+        if (!is_numeric($amount)) {
             throw new MpesaException('The amount must be numeric');
         }
         $this->amount = $amount;
@@ -88,7 +104,7 @@ class Simulate extends ApiCore
      */
     public function setCommand($command): self
     {
-        if (!\in_array($command, self::VALID_COMMANDS, true)) {
+        if (!in_array($command, self::VALID_COMMANDS, true)) {
             throw new MpesaException('Invalid command sent');
         }
         $this->command = $command;

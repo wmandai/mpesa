@@ -149,17 +149,6 @@ class LaravelMpesa
         $this->access_token = $this->getAccessToken(); //Set up access token
     }
 
-    /**
-     * Submit Request
-     *
-     * Handles submission of all API endpoints queries
-     *
-     * @param string $url The API endpoint URL
-     * @param json $data The data to POST to the endpoint $url
-     * @return object|boolean Curl response or FALSE on failure
-     * @throws exception if the Access Token is not valid
-     */
-
     public function setCred()
     {
         if (config('mpesa.sandbox')) {
@@ -203,6 +192,17 @@ class LaravelMpesa
 
     }
 
+    /**
+     * Submit Request
+     *
+     * Handles submission of all API endpoints queries
+     *
+     * @param string $url The API endpoint URL
+     * @param mixed $data The data to POST to the endpoint $url
+     * @return object|boolean Curl response or FALSE on failure
+     * @throws exception if the Access Token is not valid
+     */
+
     protected function submitRequest($url, $data)
     {
         // Returns cURL response
@@ -237,7 +237,7 @@ class LaravelMpesa
      *
      * @param int $amount The amount to send to the client
      * @param int $phone The phone number of the client in the format 2547xxxxxxxx
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
 
     public function b2c($amount, $phone, $command_id, $remarks)
@@ -270,7 +270,7 @@ class LaravelMpesa
      *
      * @param int $amount The amount to send to the business
      * @param int $shortcode The shortcode of the business to send to
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
     public function b2b($amount, $shortcode)
     {
@@ -301,7 +301,7 @@ class LaravelMpesa
      *
      * @param string $confirmURL The local URL that MPesa calls to confirm a payment
      * @param string $ValidationURL The local URL that MPesa calls to validate a payment
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
 
     public function c2bRegisterUrls()
@@ -329,7 +329,7 @@ class LaravelMpesa
      * @param int $amount The amount to send to Paybill number
      * @param int $msisdn A dummy Safaricom phone number to simulate transaction in the format 2547xxxxxxxx
      * @param string $ref A reference name for the transaction
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
     public function simulateC2B($amount, $msisdn, $ref)
     {
@@ -351,7 +351,7 @@ class LaravelMpesa
      *
      * Check Paybill balance
      *
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
     public function checkBalance()
     {
@@ -377,7 +377,7 @@ class LaravelMpesa
      * This method is used to check a transaction status
      *
      * @param string $transaction ID eg LH7819VXPE
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
     public function statusRequest($transaction = 'LH7819VXPE')
     {
@@ -408,7 +408,7 @@ class LaravelMpesa
      * @param string $trx_id Transaction ID of the Transaction you want to reverse eg LH7819VXPE
      * @param int $amount The amount from the transaction to reverse
      *
-     * @return object Curl Response from submitRequest, FALSE on failure
+     * @return boolean|string Curl Response from submitRequest, FALSE on failure
      */
 
     public function reverseTransaction($receiver, $trx_id, $amount)
@@ -440,7 +440,6 @@ class LaravelMpesa
     {
         if (!is_numeric($amount) || $amount < 1 || !is_numeric($phone)) {
             throw new \Exception("Invalid amount and/or phone number. Amount should be 10 or more, phone number should be in the format 254xxxxxxxx");
-            return false;
         }
         $timestamp = date('YmdHis');
         $passwd = base64_encode($this->lipa_na_mpesa . $this->lipa_na_mpesa_key . $timestamp);

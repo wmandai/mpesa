@@ -22,7 +22,7 @@ class StkPush extends ApiCore
      */
     protected $number;
     /**
-     * @var int
+     * @var string
      */
     protected $amount;
     /**
@@ -43,7 +43,7 @@ class StkPush extends ApiCore
      */
     public function request($amount): self
     {
-        if (!\is_numeric($amount)) {
+        if (!is_numeric($amount)) {
             throw new MpesaException('The amount must be numeric, got ' . $amount);
         }
         $this->amount = $amount;

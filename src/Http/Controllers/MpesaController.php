@@ -67,7 +67,7 @@ class MpesaController extends Controller
      * @param string|null $initiator
      * @return \Illuminate\Http\JsonResponse
      */
-    public function paymentCallback($initiator)
+    public function paymentCallback()
     {
         // $this->repository->notification('Incoming payment callback: *' . $initiator . '*');
         return response()->json(
