@@ -7,7 +7,7 @@ use Wmandai\Mpesa\Library\Simulate;
 
 if (!function_exists('mpesa_balance')) {
     /**
-     * @method \Wmandai\Mpesa\Library\BulkSender balance()
+     * @method static \Wmandai\Mpesa\Library\BulkSender balance()
      * @return mixed
      */
     function mpesa_balance()
