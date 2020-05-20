@@ -43,8 +43,7 @@ class RegisterUrlCommand extends Command
      */
     public function handle()
     {
-        $register = $this->registerUrl
-            ->register($this->askShortcode())
+        $this->registerUrl->register($this->askShortcode())
             ->onConfirmation($this->askConfirmationUrl())
             ->onValidation($this->askValidationUrl())
             ->submit();

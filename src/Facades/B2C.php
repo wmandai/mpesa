@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
 class B2C extends Facade
 {
     /**
+     * @method Wmandai\Mpesa\Library\BulkSender
      * @return string
      */
     protected static function getFacadeAccessor()
