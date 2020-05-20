@@ -1,4 +1,4 @@
-# Simple Laravel 5.5+ Package to handle Safaricom MPESA API
+# Laravel 5.5+ Package for Safaricom MPESA API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wmandai/laravel-mpesa.svg?style=flat-square)](https://packagist.org/packages/wmandai/laravel-mpesa)
 [![Build Status](https://img.shields.io/travis/wmandai/laravel-mpesa/master.svg?style=flat-square)](https://travis-ci.org/wmandai/laravel-mpesa)
