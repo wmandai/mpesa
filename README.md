@@ -5,6 +5,8 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/wmandai/mpesa.svg?style=flat-square)](https://scrutinizer-ci.com/g/wmandai/mpesa)
 [![Total Downloads](https://img.shields.io/packagist/dt/wmandai/mpesa.svg?style=flat-square)](https://packagist.org/packages/wmandai/mpesa)
 
+_Package is under development do NOT use it. It will be available soon_
+
 The package allows a merchant to initiate C2B, B2C and B2B transactions including balance query and reversals using MPESA API.
 
 Originally forked from https://github.com/samerior/mobile-money
