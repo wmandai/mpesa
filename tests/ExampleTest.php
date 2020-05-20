@@ -3,7 +3,7 @@
 namespace Wmandai\Mpesa\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Wmandai\MobileMoney\Mpesa\LaravelMpesaServiceProvider;
+use Wmandai\Mpesa\LaravelMpesaServiceProvider;
 
 class ExampleTest extends TestCase
 {
