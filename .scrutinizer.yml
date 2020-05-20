@@ -1,3 +1,11 @@
+build:
+    environment:
+        mysql: false
+        postgresql: false
+        redis: false
+        rabbitmq: false
+        php:
+            version: 7.2
 filter:
     paths:
         - 'src/*'
