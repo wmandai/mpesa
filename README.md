@@ -1,18 +1,20 @@
-# Very short description of the package
+# Simple Laravel 5.5+ Package to handle Safaricom MPESA API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wmandai/laravel-mpesa.svg?style=flat-square)](https://packagist.org/packages/wmandai/laravel-mpesa)
 [![Build Status](https://img.shields.io/travis/wmandai/laravel-mpesa/master.svg?style=flat-square)](https://travis-ci.org/wmandai/laravel-mpesa)
 [![Quality Score](https://img.shields.io/scrutinizer/g/wmandai/laravel-mpesa.svg?style=flat-square)](https://scrutinizer-ci.com/g/wmandai/laravel-mpesa)
 [![Total Downloads](https://img.shields.io/packagist/dt/wmandai/laravel-mpesa.svg?style=flat-square)](https://packagist.org/packages/wmandai/laravel-mpesa)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+The package allows a merchant to initiate C2B, B2C and B2B transactions including balance query and reversals using MPESA API.
+
+Originally forked from https://github.com/samerior/mobile-money
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require wmandai/laravel-mpesa
+composer require wmandai/mpesa
 ```
 
 ## Usage
