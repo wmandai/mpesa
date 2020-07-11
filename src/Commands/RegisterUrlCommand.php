@@ -52,7 +52,7 @@ class RegisterUrlCommand extends Command
 
     protected function askShortcode(): string
     {
-        return $this->ask('What is your shortcode', config('mpesa.c2b.shortcode'));
+        return $this->ask('What is your shortcode', config('mpesa.c2b.short_code'));
     }
 
     protected function askConfirmationUrl(): string
