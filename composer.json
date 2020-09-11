@@ -15,11 +15,11 @@
         "role": "Developer"
     }],
     "require": {
-        "php": "^7.2",
-        "illuminate/support": "^6.0|^7.0",
+        "php": "^7.3",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0",
         "laravel/helpers": "^1.2",
         "laravel/slack-notification-channel": "^2.0",
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^6.5 || ^7.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0",
@@ -41,7 +41,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
