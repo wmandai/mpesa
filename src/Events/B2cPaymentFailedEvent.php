@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
+use Wmandai\Mpesa\Database\Models\MpesaBulkPaymentResponse;
 
 /**
  * Class B2cPaymentFailedEvent

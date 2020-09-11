@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Wmandai\Mpesa\Database\Entities\MpesaC2bCallback;
+use Wmandai\Mpesa\Database\Models\MpesaC2bCallback;
 
 /**
  * Class C2BConfirmationEvent

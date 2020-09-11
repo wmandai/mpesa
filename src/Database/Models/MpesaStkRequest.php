@@ -1,9 +1,9 @@
 <?php
 
-namespace Wmandai\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Wmandai\Mpesa\Database\Entities\MpesaStkCallback;
+use Wmandai\Mpesa\Database\Models\MpesaStkCallback;
 
 /**
  * Model to save STK Push requests to database

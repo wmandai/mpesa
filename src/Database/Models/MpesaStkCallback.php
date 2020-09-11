@@ -1,6 +1,6 @@
 <?php
 
-namespace Wmandai\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $PhoneNumber
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \Wmandai\Mpesa\Database\Entities\MpesaStkRequest $request
+ * @property-read \Wmandai\Mpesa\Database\Models\MpesaStkRequest $request
  */
 class MpesaStkCallback extends Model
 {

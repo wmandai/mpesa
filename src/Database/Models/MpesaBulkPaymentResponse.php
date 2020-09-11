@@ -1,11 +1,11 @@
 <?php
 
-namespace Wmandai\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentResponse
+ * Wmandai\Mpesa\Database\Models\MpesaBulkPaymentResponse
  *
  * @property int $id
  * @property int $ResultType
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $ResultParameters
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentRequest $request
+ * @property-read \Wmandai\Mpesa\Database\Models\MpesaBulkPaymentRequest $request
  * @mixin \Eloquent
  */
 class MpesaBulkPaymentResponse extends Model

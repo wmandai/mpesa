@@ -16,7 +16,7 @@ class StkPaymentSuccessful
     public function handle(StkPushPaymentSuccessEvent $event)
     {
         /**
-         * @var \Wmandai\Mpesa\Database\Entities\MpesaStkCallback $stk
+         * @var \Wmandai\Mpesa\Database\Models\MpesaStkCallback $stk
          *
          */
         $stk = $event->stk_callback;

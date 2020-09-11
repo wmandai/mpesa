@@ -6,7 +6,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
-use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Database\Models\MpesaStkRequest;
 
 /**
  * Event will be trigged when STK push is requested

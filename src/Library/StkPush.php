@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Library;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
-use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Database\Models\MpesaStkRequest;
 use Wmandai\Mpesa\Events\StkPushRequestedEvent;
 use Wmandai\Mpesa\Exceptions\MpesaException;
 use Wmandai\Mpesa\Repositories\Generator;

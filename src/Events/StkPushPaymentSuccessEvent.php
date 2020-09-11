@@ -5,7 +5,7 @@ namespace Wmandai\Mpesa\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Wmandai\Mpesa\Database\Entities\MpesaStkCallback;
+use Wmandai\Mpesa\Database\Models\MpesaStkCallback;
 
 /**
  * Class StkPushPaymentSuccessEvent

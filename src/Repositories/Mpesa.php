@@ -4,11 +4,11 @@ namespace Wmandai\Mpesa\Repositories;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentRequest;
-use Wmandai\Mpesa\Database\Entities\MpesaBulkPaymentResponse;
-use Wmandai\Mpesa\Database\Entities\MpesaC2bCallback;
-use Wmandai\Mpesa\Database\Entities\MpesaStkCallback;
-use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Database\Models\MpesaBulkPaymentRequest;
+use Wmandai\Mpesa\Database\Models\MpesaBulkPaymentResponse;
+use Wmandai\Mpesa\Database\Models\MpesaC2bCallback;
+use Wmandai\Mpesa\Database\Models\MpesaStkCallback;
+use Wmandai\Mpesa\Database\Models\MpesaStkRequest;
 use Wmandai\Mpesa\Events\B2cPaymentFailedEvent;
 use Wmandai\Mpesa\Events\B2cPaymentSuccessEvent;
 use Wmandai\Mpesa\Events\C2bConfirmationEvent;

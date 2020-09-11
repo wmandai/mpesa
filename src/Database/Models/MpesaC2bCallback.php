@@ -1,11 +1,11 @@
 <?php
 
-namespace Wmandai\Mpesa\Database\Entities;
+namespace Wmandai\Mpesa\Database\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Wmandai\Mpesa\Database\Entities\MpesaC2bCallback
+ * Wmandai\Mpesa\Database\Models\MpesaC2bCallback
  *
  * @property int $id
  * @property string $TransactionType

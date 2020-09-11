@@ -16,7 +16,7 @@ class StkPaymentFailed
     public function handle(StkPushPaymentFailedEvent $event)
     {
         /**
-         * @var \Wmandai\Mpesa\Database\Entities\MpesaStkCallback $stk
+         * @var \Wmandai\Mpesa\Database\Models\MpesaStkCallback $stk
          * */
         $stk = $event->stk_callback;
         $stk->request()->update(['status' => 'Failed']);

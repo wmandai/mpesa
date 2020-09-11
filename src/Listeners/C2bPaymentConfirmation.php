@@ -2,7 +2,7 @@
 
 namespace Wmandai\Mpesa\Listeners;
 
-use Wmandai\Mpesa\Database\Entities\MpesaStkRequest;
+use Wmandai\Mpesa\Database\Models\MpesaStkRequest;
 use Wmandai\Mpesa\Events\C2bConfirmationEvent;
 
 /**
