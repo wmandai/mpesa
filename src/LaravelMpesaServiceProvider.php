@@ -41,7 +41,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../assets/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         /*
          * Optional methods to load your package assets
          */
@@ -55,7 +55,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/config.php' => config_path('mpesa.php'),
             ], 'config');
             $this->publishes([
-                __DIR__ . '/../assets/migrations/' => database_path('migrations'),
+                __DIR__ . '/../database/migrations/' => database_path('migrations'),
             ], 'migrations');
 
             // Publishing the views.
