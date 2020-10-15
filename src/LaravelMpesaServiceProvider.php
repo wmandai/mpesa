@@ -42,48 +42,13 @@ class LaravelMpesaServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         // $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-mpesa');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-mpesa');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('mpesa.php'),
             ], 'config');
-            // if (!class_exists('CreateMpesaStkRequestsTable')) {
-            //     $this->publishes([
-            //         __DIR__ . '/../database/migrations/create_mpesa_stk_requests_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_stk_requests_table.php'),
-            //         __DIR__ . '/../database/migrations/create_mpesa_stk_callbacks_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_stk_callbacks_table.php'),
-            //         __DIR__ . '/../database/migrations/create_mpesa_c2b_callbacks_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_c2b_callbacks_table.php'),
-            //         __DIR__ . '/../database/migrations/create_mpesa_bulk_payment_requests_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_bulk_payment_requests_table.php'),
-            //         __DIR__ . '/../database/migrations/create_mpesa_bulk_payment_responses_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_bulk_payment_responses_table.php'),
-            //         __DIR__ . '/../database/migrations/create_mpesa_b2c_result_parameters_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_b2c_result_parameters_table.php'),
-            //         __DIR__ . '/../database/migrations/drop_result_parameter.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_drop_result_parameter.php'),
-            //     ], 'mpesa-migrations');
-            // }
             $this->publishes([
                 __DIR__ . '/../database/migrations/' => database_path('migrations'),
             ], 'mpesa-migrations');
-
-            // Publishing the views.
-            /*$this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/mpesa'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/mpesa'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/mpesa'),
-            ], 'lang');*/
-
             // Registering package commands.
             // $this->commands([]);
             $this->app['router']->aliasMiddleware('mpesacors', MobileMoneyCors::class);
