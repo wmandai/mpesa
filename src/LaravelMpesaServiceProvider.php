@@ -63,7 +63,7 @@ class LaravelMpesaServiceProvider extends ServiceProvider
                     __DIR__ . '/../database/migrations/create_mpesa_bulk_payment_responses_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_bulk_payment_responses_table.php'),
                     __DIR__ . '/../database/migrations/create_mpesa_b2c_result_parameters_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mpesa_b2c_result_parameters_table.php'),
                     __DIR__ . '/../database/migrations/drop_result_parameter.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_drop_result_parameter.php'),
-                ], 'migrations');
+                ], 'mpesa-migrations');
             }
             // $this->publishes([
             //     __DIR__ . '/../database/migrations/' => database_path('migrations'),
