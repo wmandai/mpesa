@@ -1,6 +1,6 @@
 {
     "name": "wmandai/mpesa",
-    "description": "MPESA API for Laravel Framework",
+    "description": "MPESA API integrations for Laravel Framework",
     "keywords": [
         "wmandai",
         "larapesa",
