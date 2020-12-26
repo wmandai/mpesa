@@ -9,13 +9,15 @@
     "homepage": "https://github.com/wmandai/mpesa",
     "license": "MIT",
     "type": "library",
-    "authors": [{
-        "name": "William Mandai",
-        "email": "wmandai@gitbench.com",
-        "role": "Developer"
-    }],
+    "authors": [
+        {
+            "name": "William Mandai",
+            "email": "wmandai@gitbench.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "laravel/helpers": "^1.2",
         "laravel/slack-notification-channel": "^2.0",
