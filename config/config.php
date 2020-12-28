@@ -2,7 +2,7 @@
 /**
  * Laravel MPESA configuration file
  *
- * PHP version 7
+ * PHP version 7 and 8
  *
  * @category  Configuration
  * @package   LaravelMPESA
