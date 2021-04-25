@@ -5,6 +5,7 @@ namespace Wmandai\Mpesa;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Wmandai\Mpesa\Commands\Install;
 use Wmandai\Mpesa\Commands\RegisterUrlCommand;
 use Wmandai\Mpesa\Commands\StkStatusCommand;
 use Wmandai\Mpesa\Events\B2cPaymentFailedEvent;
@@ -41,8 +42,14 @@ class LaravelMpesaServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+
         // $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         if ($this->app->runningInConsole()) {
+
+            $this->commands([
+                Install::class,
+            ]);
+
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('mpesa.php'),
             ], 'config');
