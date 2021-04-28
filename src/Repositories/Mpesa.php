@@ -2,8 +2,10 @@
 
 namespace Wmandai\Mpesa\Repositories;
 
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Wmandai\Mpesa\Database\Models\MpesaBulkPaymentRequest;
 use Wmandai\Mpesa\Database\Models\MpesaBulkPaymentResponse;
 use Wmandai\Mpesa\Database\Models\MpesaC2bCallback;
@@ -142,8 +144,8 @@ class Mpesa
     // TODO notify via slack incoming stk callback
     public function notification($title, $important = false): void
     {
-        $slack = \config('mpesa.notifications.slack_web_hook');
-        if (!$important && empty($slack) && \config('mpesa.notifications.only_important')) {
+        $slack = config('mpesa.notifications.slack_web_hook');
+        if (!$important && empty($slack) && config('mpesa.notifications.only_important')) {
             return;
         }
         $payload = [
@@ -151,7 +153,7 @@ class Mpesa
             'title' => $title,
         ];
 
-        \Notification::route('slack', \config('mpesa.notifications.slack_web_hook'))->notify(new MpesaNotification($payload));
+        Notification::route('slack', config('mpesa.notifications.slack_web_hook'))->notify(new MpesaNotification($payload));
     }
 
     /**
@@ -178,7 +180,7 @@ class Mpesa
                 $errors[$item->CheckoutRequestID] = $status->ResultDesc;
                 $callback = MpesaStkCallback::create($attributes);
                 $this->fireStkEvent($callback, get_object_vars($status));
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $errors[$item->CheckoutRequestID] = $e->getMessage();
             }
         }
