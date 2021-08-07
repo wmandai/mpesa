@@ -277,12 +277,12 @@ class Daraja
         throw new MpesaException($response->ResponseDescription);
     }
 
-    public function stkQuery(string $checkoutRequestID = null)
+    public function stkQuery(string $checkoutRequestID)
     {
         $timestamp = date('YmdHis');
         $this->shortCode = $this->businessShortCode;
         $passwd = base64_encode($this->shortCode . $this->passKey . $timestamp);
-        if ($checkoutRequestID == null || $checkoutRequestID == '') {
+        if (!strlen($checkoutRequestID)) {
             throw new \Exception("Checkout Request ID cannot be null");
         }
         $body = [
