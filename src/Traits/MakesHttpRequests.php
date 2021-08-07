@@ -13,7 +13,6 @@ trait MakesHttpRequests
      * @param string $uri
      * @param array $queryParams
      * @param array $headers
-     * @return void
      */
     protected function get(string $uri, array $queryParams = [], array $headers = [])
     {
@@ -25,7 +24,6 @@ trait MakesHttpRequests
      * @param string $uri
      * @param array $formParams
      * @param array $headers
-     * @return void
      */
     protected function post(string $uri, array $formParams = [], array $headers = [])
     {
