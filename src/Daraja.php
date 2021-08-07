@@ -69,7 +69,6 @@ class Daraja
      * Get Daraja API Access Token
      *
      * @param boolean $bulk
-     * @return void
      */
     public function getAccessToken(bool $bulk = false)
     {
@@ -323,7 +322,6 @@ class Daraja
      *
      * @param string $url
      * @param array $data
-     * @return void
      */
     public function send(string $url, array $data)
     {
