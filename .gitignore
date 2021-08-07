@@ -1,0 +1,8 @@
+build
+composer.lock
+docs
+vendor
+tests/ApiTest.php
+.phpunit.result.cache
+.env
+.php_cs.cache

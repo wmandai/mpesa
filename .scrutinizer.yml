@@ -1,0 +1,18 @@
+build:
+    environment:
+        mysql: false
+        postgresql: false
+        redis: false
+        rabbitmq: false
+        php:
+            version: 7.4
+filter:
+    paths:
+        - 'src/*'
+    excluded_paths:
+        - 'src/config/*'
+        - 'vendor/*'
+        - 'spec/*'
+tools:
+    php_cs_fixer:
+        config: { level: psr2 }

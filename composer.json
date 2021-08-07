@@ -1,0 +1,66 @@
+{
+    "name": "wmandai/mpesa",
+    "description": "MPESA API integrations for Laravel Framework",
+    "keywords": [
+        "wmandai",
+        "safaricom",
+        "mpesa",
+        "payments",
+        "kenya",
+        "mobile wallet",
+        "daraja"
+    ],
+    "homepage": "https://github.com/wmandai/mpesa",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "William Mandai",
+            "email": "wmandai@gitbench.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3|^8.0",
+        "guzzlehttp/guzzle": "^6.5|^7.0",
+        "illuminate/support": "^5.0|^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 || ^9.0",
+        "psalm/plugin-laravel": "^1.2",
+        "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+        "laravel/slack-notification-channel": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wmandai\\Mpesa\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wmandai\\Mpesa\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wmandai\\Mpesa\\DarajaServiceProvider"
+            ],
+            "aliases": {
+                "MPESA": "Wmandai\\Mpesa\\Facades\\Mpesa"
+            }
+        }
+    }
+}
