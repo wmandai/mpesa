@@ -49,7 +49,6 @@ trait MakesHttpRequests
      * @param array $queryParams
      * @param array $formParams
      * @param array $headers
-     * @return void
      */
     protected function request(string $method, string $uri, $queryParams = [], $formParams = [], $headers = [])
     {
