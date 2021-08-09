@@ -31,6 +31,8 @@ class Daraja
     public $validationUrl;
     public $confirmationUrl;
 
+    public $pullNominatedNumber;
+    public $pullCallbackUrl;
     public $retry = 3;
     /**
      * Initializes the class with an array of API values.
@@ -49,6 +51,8 @@ class Daraja
         $this->confirmationUrl = config('mpesa.confirmation_url');
         $this->initiatorUsername = config('mpesa.initiator_username');
         $this->initiatorPassword = config('mpesa.initiator_password');
+        $this->pullNominatedNumber = config('mpesa.pull.nominated_number');
+        $this->pullCallbackUrl = config('mpesa.pull.callback');
 
         $this->timeoutUrl = config('mpesa.timeout_url');
         $this->resultUrl = config('mpesa.result_url');
@@ -113,6 +117,33 @@ class Daraja
                 'ValidationURL' => $this->validationUrl,
             ]
         );
+    }
+    public function registerPull()
+    {
+        return $this->send(
+            Endpoints::build('register_pull'),
+            [
+                'ShortCode' => $this->shortCode,
+                'RequestType' => 'Pull',
+                'NominatedNumber' => $this->pullNominatedNumber,
+                'CallbackURL' => $this->pullCallbackUrl,
+            ]
+        );
+    }
+
+    /**
+     * To make a pull of the missed transactions.
+     * NB: This API pulls transactions for a period not exceeding 48hrs.
+     */
+    public function pullTransactions($startDate, $endDate, $offSet = 0)
+    {
+        $body = [
+            'ShortCode' => $this->shortCode,
+            'StartDate' => $startDate, // Format 2019-07-31 20:35:21 / 2019-07-31 19:00
+            'EndDate' => $endDate, // Format 2019-07-31 20:35:21 / 2019-07-31 22:35
+            'OffSetValue' => $offSet
+        ];
+        return $this->send(Endpoints::build('pull_transactions'), $body);
     }
 
     /**

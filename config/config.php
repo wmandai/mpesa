@@ -12,14 +12,17 @@ return [
         'consumer_secret' => env('MPESA_CONSUMER_SECRET', ''),
     ],
     'b2c' => [
-        'shortcode' => env('MPESA_B2C_SHORTCODE', ''),
-        'consumer_key' => env('MPESA_B2C_CONSUMER_KEY', ''),
-        'consumer_secret' => env('MPESA_B2C_CONSUMER_SECRET', ''),
+        'shortcode' => env('MPESA_B2C_SHORTCODE', env('MPESA_SHORTCODE', '')),
+        'consumer_key' => env('MPESA_B2C_CONSUMER_KEY', env('MPESA_CONSUMER_KEY', '')),
+        'consumer_secret' => env('MPESA_B2C_CONSUMER_SECRET', env('MPESA_CONSUMER_SECRET', '')),
+    ],
+    'pull' => [
+        'nominated_number' => env('MPESA_MSISDN', ''),
+        'callback' => env('APP_URL') . '/payments/callbacks/pull',
     ],
     // Till Number
     'business_shortcode' => env('MPESA_BUSINESS_SHORTCODE', ''),
     'passkey' => env('MPESA_PASSKEY', ''),
-    'test_msisdn' => env('MPESA_TEST_MSISDN', ''),
     'cache_prefix' => 'daraja',
     'validation_url' => env('APP_URL') . '/payments/callbacks/validate',
     'confirmation_url' => env('APP_URL') . '/payments/callbacks/confirmation',

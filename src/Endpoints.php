@@ -25,6 +25,8 @@ class Endpoints
             'b2b' => 'mpesa/b2b/v1/paymentrequest',
             'simulate' => 'mpesa/c2b/v1/simulate',
             'reversal' => 'mpesa/reversal/v1/request',
+            'register_pull' => 'pulltransactions/v1/register',
+            'pull_transactions' => 'pulltransactions/v1/query'
         ];
         if (in_array($section, $endpoints)) {
             return self::getUrl($section);

@@ -9,6 +9,18 @@ if (!function_exists('mpesaRegister')) {
         return Mpesa::register();
     }
 }
+if (!function_exists('mpesaRegisterPull')) {
+    function mpesaRegisterPull()
+    {
+        return Mpesa::registerPull();
+    }
+}
+if (!function_exists('pullTransactions')) {
+    function pullTransactions($startDate, $endDate)
+    {
+        return Mpesa::pullTransactions($startDate, $endDate);
+    }
+}
 if (!function_exists('mpesaBalance')) {
     function mpesaBalance($identifier = 4, $remarks = 'Balance Check')
     {
