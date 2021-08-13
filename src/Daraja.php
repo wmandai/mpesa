@@ -285,14 +285,16 @@ class Daraja
         }
         $timestamp = date('YmdHis');
         $passwd = base64_encode($this->shortCode . $this->passKey . $timestamp);
+        // TODO
+        // For paybill, business shortcode and party b should be same
         $body = [
-            'BusinessShortCode' => $this->shortCode,
+            'BusinessShortCode' => $this->shortCode, // should be store number
             'Password' => $passwd,
             'Timestamp' => $timestamp,
             'TransactionType' => ($type == 'paybill') ? 'CustomerPayBillOnline' : 'CustomerBuyGoodsOnline',
             'Amount' => $amount,
             'PartyA' => correctPhoneNumber($phoneNumber),
-            'PartyB' => $this->shortCode,
+            'PartyB' => $this->shortCode, //should be the till number
             'PhoneNumber' => correctPhoneNumber($phoneNumber),
             'CallBackURL' => $this->stkCallbackUrl,
             'AccountReference' => is_null($ref) ? correctPhoneNumber($phoneNumber) : $ref,
