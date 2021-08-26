@@ -20,7 +20,6 @@ return [
         'nominated_number' => env('MPESA_MSISDN', ''),
         'callback' => env('APP_URL') . '/payments/callbacks/pull',
     ],
-    // Till Number
     'business_shortcode' => env('MPESA_BUSINESS_SHORTCODE', ''),
     'passkey' => env('MPESA_PASSKEY', ''),
     'cache_prefix' => 'daraja',
