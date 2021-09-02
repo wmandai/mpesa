@@ -23,7 +23,8 @@ composer require wmandai/mpesa
 ## Usage
 
 ``` php
-// Usage description here
+<?php  
+$service = mpesaRequest($phone, $amount, $reference, 'paybill', $description)
 ```
 
 ### Testing
