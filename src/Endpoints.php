@@ -28,6 +28,7 @@ class Endpoints
             'register_pull' => 'pulltransactions/v1/register',
             'pull_transactions' => 'pulltransactions/v1/query'
         ];
+        // TODO check if array_key_exists is better option
         if (in_array($section, $endpoints)) {
             return self::getUrl($section);
         }
