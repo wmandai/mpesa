@@ -46,12 +46,12 @@ class DarajaServiceProvider extends ServiceProvider
                 'config'
             );
             // Publish views
-            $this->publishes(
-                [
-                    __DIR__ . '/../resources/views' => resource_path('views/vendor/mpesa'),
-                ],
-                'views'
-            );
+            // $this->publishes(
+            //     [
+            //         __DIR__ . '/../resources/views' => resource_path('views/vendor/mpesa'),
+            //     ],
+            //     'views'
+            // );
             // $this->app['router']->aliasMiddleware('mpesacors', MpesaCors::class);
         }
     }
