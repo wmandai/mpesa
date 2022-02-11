@@ -76,29 +76,26 @@ class MpesaController extends Controller
         if ($this->transactionValidation($this->request->all())) {
             return response()->json(
                 [
-                'ResultCode' => 0,
-                'ResultDesc' => 'Accepted',
+                    'ResultCode' => 0,
+                    'ResultDesc' => 'Accepted',
                 ]
             );
         }
         return response()->json(
             [
-            'ResultCode' => 1,
-            'ResultDesc' => 'Rejected',
+                'ResultCode' => 1,
+                'ResultDesc' => 'Rejected',
             ]
         );
     }
 
     public function stkCallback()
     {
-        if (config('mpesa.notifications.slack.enabled')) {
-            $this->notify('MPESA STK Callback: *C2B*', true);
-        }
         $this->acceptStkCallback($this->request->Body);
         return response()->json(
             [
-            'ResultCode' => 0,
-            'ResultDesc' => 'STK Callback received successfully',
+                'ResultCode' => 0,
+                'ResultDesc' => 'STK Callback received successfully',
             ]
         );
     }

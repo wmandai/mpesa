@@ -79,17 +79,17 @@ trait InteractsWithDatabase
     {
         // TODO check database columns
         Log::error($transaction);
-        $data = $transaction->stkCallback;
+        $data = $transaction['stkCallback'];
         $real_data = [
-            'MerchantRequestID' => $data->MerchantRequestID,
-            'CheckoutRequestID' => $data->CheckoutRequestID,
-            'ResultCode' => $data->ResultCode,
-            'ResultDesc' => $data->ResultDesc,
+            'MerchantRequestID' => $data['MerchantRequestID'],
+            'CheckoutRequestID' => $data['CheckoutRequestID'],
+            'ResultCode' => $data['ResultCode'],
+            'ResultDesc' => $data['ResultDesc'],
         ];
-        if ($data->ResultCode == 0) {
-            $payload = $data->CallbackMetadata->Item;
+        if ($data['ResultCode'] == 0) {
+            $payload = $data['CallbackMetadata']['Item'];
             foreach ($payload as $callback) {
-                $real_data[$callback->Name] = @$callback->Value;
+                $real_data[$callback['Name']] = @$callback['Value'];
             }
             $callback = MpesaStkCallback::create($real_data);
         } else {
