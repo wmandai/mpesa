@@ -301,7 +301,6 @@ class Daraja
             'TransactionDesc' => is_null($desc) ? randomMpesaNumber() : $desc,
         ];
         $response = $this->send(Endpoints::build('stk_push'), $body);
-        dd($response);
         if ($response->ResponseCode == 0) {
             // STK Push sent successfully
             return $this->saveStkRequest($body, (array) $response);
