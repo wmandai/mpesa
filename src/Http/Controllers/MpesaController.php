@@ -57,9 +57,6 @@ class MpesaController extends Controller
 
     public function confirmation()
     {
-        if (config('mpesa.notifications.slack.enabled')) {
-            $this->notify('MPESA Confirmation: *C2B*', true);
-        }
         $this->transactionConfirmation($this->request->all());
         return response()->json(
             [
@@ -70,9 +67,6 @@ class MpesaController extends Controller
     }
     public function validation()
     {
-        if (config('mpesa.notifications.slack.enabled')) {
-            $this->notify('MPESA Validate Payment URL: *C2B*');
-        }
         if ($this->transactionValidation($this->request->all())) {
             return response()->json(
                 [
