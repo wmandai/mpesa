@@ -18,16 +18,16 @@ return [
     ],
     'pull' => [
         'nominated_number' => env('MPESA_MSISDN', ''),
-        'callback' => env('APP_URL') . '/payments/callbacks/pull',
+        'callback' => env('APP_URL') . '/mpesa/pull',
     ],
     'business_shortcode' => env('MPESA_BUSINESS_SHORTCODE', ''),
     'passkey' => env('MPESA_PASSKEY', ''),
     'cache_prefix' => 'daraja',
-    'validation_url' => env('APP_URL') . '/payments/callbacks/validate',
-    'confirmation_url' => env('APP_URL') . '/payments/callbacks/confirmation',
-    'timeout_url' => env('APP_URL') . '/payments/callbacks/timeout_url',
-    'result_url' => env('APP_URL') . '/payments/callbacks/result_url',
-    'stk_callback_url' => env('APP_URL') . '/payments/callbacks/stk',
+    'validation_url' => env('APP_URL') . '/mpesa/validate',
+    'confirmation_url' => env('APP_URL') . '/mpesa/confirmation',
+    'timeout_url' => env('APP_URL') . '/mpesa/timeout_url',
+    'result_url' => env('APP_URL') . '/mpesa/result',
+    'stk_callback_url' => env('APP_URL') . '/mpesa/stk_callback',
     /*
      * This is the user initiating the transaction,
      * usually from the Mpesa organization portal
@@ -54,7 +54,7 @@ return [
     ],
 
     // Avoids collision with existing routes
-    'prefix' => 'payments/callbacks',
+    'prefix' => 'mpesa',
     'middleware' => ['web'],
 
 ];
