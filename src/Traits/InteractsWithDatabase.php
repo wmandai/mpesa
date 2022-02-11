@@ -77,8 +77,6 @@ trait InteractsWithDatabase
 
     public function acceptStkCallback($transaction)
     {
-        // TODO check database columns
-        Log::error($transaction);
         $data = $transaction['stkCallback'];
         $real_data = [
             'merchant_request_id' => $data['MerchantRequestID'],
