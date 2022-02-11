@@ -95,7 +95,7 @@ trait InteractsWithDatabase
         } else {
             $callback = MpesaStkCallback::create($real_data);
         }
-        $this->fireStkEvent($callback, get_object_vars($data));
+        $this->fireStkEvent($callback, $data);
         return $callback;
     }
 
