@@ -300,9 +300,7 @@ class Daraja
             'AccountReference' => is_null($ref) ? correctPhoneNumber($phoneNumber) : $ref,
             'TransactionDesc' => is_null($desc) ? randomMpesaNumber() : $desc,
         ];
-        dd($body);
         $response = $this->send(Endpoints::build('stk_push'), $body);
-        dd($response);
         if ($response->ResponseCode == 0) {
             // STK Push sent successfully
             return $this->saveStkRequest($body, (array) $response);
