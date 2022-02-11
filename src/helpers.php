@@ -110,3 +110,19 @@ if (!function_exists('randomMpesaNumber')) {
         return strtoupper($randomString);
     }
 }
+
+/**
+ * Convert Camel Case String to underscore-separated
+ * @param string $str The input string.
+ * @param string $separator Separator, the default is underscore
+ * @return string
+ */
+function camelCase2UnderScore($str, $separator = "_")
+{
+    if (empty($str)) {
+        return $str;
+    }
+    $str = lcfirst($str);
+    $str = preg_replace("/[A-Z]/", $separator . "$0", $str);
+    return strtolower($str);
+}

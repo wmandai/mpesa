@@ -81,15 +81,15 @@ trait InteractsWithDatabase
         Log::error($transaction);
         $data = $transaction['stkCallback'];
         $real_data = [
-            'MerchantRequestID' => $data['MerchantRequestID'],
-            'CheckoutRequestID' => $data['CheckoutRequestID'],
-            'ResultCode' => $data['ResultCode'],
-            'ResultDesc' => $data['ResultDesc'],
+            'merchant_request_id' => $data['MerchantRequestID'],
+            'checkout_request_id' => $data['CheckoutRequestID'],
+            'result_code' => $data['ResultCode'],
+            'result_desc' => $data['ResultDesc'],
         ];
         if ($data['ResultCode'] == 0) {
             $payload = $data['CallbackMetadata']['Item'];
             foreach ($payload as $callback) {
-                $real_data[$callback['Name']] = @$callback['Value'];
+                $real_data[camelCase2UnderScore($callback['Name'])] = @$callback['Value'];
             }
             $callback = MpesaStkCallback::create($real_data);
         } else {
