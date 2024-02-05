@@ -22,10 +22,6 @@ class CreateMpesaBulkPaymentResponsesTable extends Migration
             $table->string('conversation_id');
             $table->string('transaction_id');
             $table->timestamps();
-
-            $table->foreign('conversation_id')
-                ->references('conversation_id')
-                ->on('mpesa_bulk_payment_requests')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 
